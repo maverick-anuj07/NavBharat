@@ -2065,3 +2065,682 @@ body {
   line-height: 1.55;
 }
 
+/* ==========================================================================
+   NavBharat Modern Civic Intelligence Dashboard (Exact Match to Design Brief)
+   ========================================================================== */
+
+.navbharat-header {
+  background-color: #132238;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  color: #ffffff;
+  border-bottom: 1px solid #1e3554;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbharat-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbharat-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: #00c4b4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #132238;
+  box-shadow: 0 0 10px rgba(0, 196, 180, 0.4);
+}
+
+.navbharat-brand-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.navbharat-divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.navbharat-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.navbharat-search-box {
+  width: 440px;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbharat-search-input {
+  width: 100%;
+  height: 38px;
+  background: #203554;
+  border: 1px solid #2d4a75;
+  border-radius: 8px;
+  padding: 0 14px 0 38px;
+  font-size: 13px;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.navbharat-search-input:focus {
+  outline: none;
+  background: #274066;
+  border-color: #00c4b4;
+  box-shadow: 0 0 0 2px rgba(0, 196, 180, 0.2);
+}
+
+.navbharat-search-input::placeholder {
+  color: #94a3b8;
+}
+
+.navbharat-search-icon {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.navbharat-user-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbharat-lang-pill {
+  display: flex;
+  background: #1b2f4a;
+  border: 1px solid #29456d;
+  border-radius: 20px;
+  padding: 2px;
+}
+
+.navbharat-lang-btn {
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.navbharat-lang-btn.active {
+  background: #00c4b4;
+  color: #132238;
+}
+
+.navbharat-user-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1e334f;
+  border: 1px solid #2a476e;
+  border-radius: 20px;
+  padding: 5px 12px 5px 6px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.navbharat-user-pill:hover {
+  background: #274164;
+}
+
+.navbharat-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+}
+
+/* Sidebar & Body Layout */
+.navbharat-body-container {
+  display: flex;
+  min-height: calc(100vh - 62px);
+  background-color: #f3f6fa;
+}
+
+.navbharat-sidebar {
+  width: 220px;
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.navbharat-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: none;
+  background: transparent;
+  text-align: left;
+  width: 100%;
+}
+
+.navbharat-menu-item:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.navbharat-menu-item.active {
+  background: #e0f4f2;
+  color: #0d9488;
+  font-weight: 600;
+}
+
+.navbharat-menu-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbharat-main-viewport {
+  flex: 1;
+  padding: 24px 28px;
+  overflow-y: auto;
+}
+
+/* Metric Cards Row */
+.navbharat-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.navbharat-metric-card {
+  background: #ffffff;
+  border: 1px solid #e5eaf2;
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbharat-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.navbharat-metric-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navbharat-metric-icon.blue { background: #e0f2fe; color: #0284c7; }
+.navbharat-metric-icon.amber { background: #fef3c7; color: #d97706; }
+.navbharat-metric-icon.purple { background: #f3e8ff; color: #9333ea; }
+.navbharat-metric-icon.green { background: #d1fae5; color: #059669; }
+
+.navbharat-metric-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.navbharat-metric-number {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.navbharat-metric-trend {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbharat-trend-positive {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.navbharat-trend-compare {
+  color: #94a3b8;
+}
+
+/* 3-Column Panels Grid */
+.navbharat-panels-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.25fr 0.85fr;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 22px;
+}
+
+.navbharat-panel-card {
+  background: #ffffff;
+  border: 1px solid #e5eaf2;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.navbharat-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.navbharat-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.navbharat-panel-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+.navbharat-panel-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0284c7;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbharat-panel-link:hover {
+  text-decoration: underline;
+}
+
+/* Map Panel Canvas & Styling */
+.navbharat-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background: #edf3f8;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.navbharat-map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.navbharat-zoom-box {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  z-index: 5;
+}
+
+.navbharat-zoom-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #334155;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbharat-zoom-btn:hover {
+  background: #f1f5f9;
+}
+
+.navbharat-zoom-btn + .navbharat-zoom-btn {
+  border-top: 1px solid #e2e8f0;
+}
+
+.navbharat-map-legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.navbharat-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.navbharat-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.navbharat-legend-dot.red { background: #ef4444; }
+.navbharat-legend-dot.orange { background: #f97316; }
+.navbharat-legend-dot.blue { background: #3b82f6; }
+.navbharat-legend-dot.green { background: #10b981; }
+
+/* Recent Clusters Table */
+.navbharat-clusters-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.navbharat-clusters-table th {
+  text-align: left;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding: 8px 10px 10px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  letter-spacing: 0.2px;
+}
+
+.navbharat-cluster-row {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.navbharat-cluster-row:hover {
+  background: #f8fafc;
+}
+
+.navbharat-cluster-row td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.navbharat-cluster-row:last-child td {
+  border-bottom: none;
+}
+
+.navbharat-cluster-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbharat-cluster-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0;
+}
+
+.navbharat-cluster-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.navbharat-cluster-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.navbharat-cluster-sub {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.navbharat-cluster-loc {
+  font-size: 12.5px;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.navbharat-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.navbharat-badge.peach {
+  background: #ffedd5;
+  color: #ea580c;
+}
+
+.navbharat-badge.cyan {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.navbharat-badge.purple {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+.navbharat-badge.emerald {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.navbharat-cluster-date {
+  font-size: 11.5px;
+  color: #475569;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.navbharat-cluster-time {
+  font-size: 10.5px;
+  color: #94a3b8;
+}
+
+/* Routing Explanation Panel */
+.navbharat-routing-card {
+  background: #ffffff;
+  border: 1px solid #e5eaf2;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.navbharat-field-group {
+  margin-bottom: 12px;
+}
+
+.navbharat-field-label {
+  font-size: 12px;
+  color: #475569;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbharat-alert-box {
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbharat-alert-box.amber {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #b45309;
+}
+
+.navbharat-alert-box.blue {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+}
+
+.navbharat-alert-box.gray {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+.navbharat-demo-banner {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  border-radius: 8px;
+  padding: 9px 12px;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #dc2626;
+  letter-spacing: 0.5px;
+  margin-top: 14px;
+}
+
+/* Scenic Hero Card */
+.navbharat-hero-card {
+  position: relative;
+  height: 175px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.navbharat-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.navbharat-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.35) 55%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.navbharat-hero-text {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Footer Disclaimer */
+.navbharat-footer-text {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 12px;
+  padding: 16px 0 24px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1180px) {
+  .navbharat-panels-grid {
+    grid-template-columns: 1fr;
+  }
+  .navbharat-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbharat-body-container {
+    flex-direction: column;
+  }
+  .navbharat-sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .navbharat-search-box {
+    display: none;
+  }
+  .navbharat-subtitle {
+    display: none;
+  }
+  .navbharat-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
