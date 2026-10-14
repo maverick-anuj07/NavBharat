@@ -28,9 +28,19 @@
       brand_tagline: "Accountable Public Service Listening & Institutional Resolution",
       nav_dashboard: "Public Dashboard",
       nav_report: "Submit Issue",
+      nav_admin_map: "Admin Map & Analytics",
       nav_authority: "Authority Desk",
       nav_governance: "Polity & Finance",
       nav_charter: "Safeguards & Charter",
+      admin_map_title: "Nashik District Administrative Map & Analytics",
+      admin_role_badge: "Operational Intelligence Desk",
+      admin_map_subtitle: "Spatial monitoring of public service grievances, neutral ward-level operational workloads, statutory routing verification, and issue concentration trends across Nashik.",
+      stat_admin_total: "Distinct Cases Logged",
+      stat_admin_received: "Newly Received",
+      stat_admin_review: "Awaiting Review",
+      stat_admin_pending: "Pending With Owner",
+      stat_admin_overdue: "Overdue / Needs Attention",
+      stat_admin_resolved: "Resolved / Closed",
       dash_title: "Nashik District Public Service Overview",
       dash_subtitle: "Transparent tracking of citizen reports, aggregate shared concerns, and official institutional commitments across rural and urban Nashik.",
       btn_raise_concern: "Raise a Concern",
@@ -159,9 +169,19 @@
       brand_tagline: "उत्तरदायी सार्वजनिक सेवा संवाद व संस्थात्मक निवारण",
       nav_dashboard: "नागरिक डॅशबोर्ड",
       nav_report: "तक्रार नोंदवा",
+      nav_admin_map: "प्रशासकीय नकाशा व विश्लेषण",
       nav_authority: "प्रशासकीय कक्ष",
       nav_governance: "राज्यव्यवस्था व वित्त",
       nav_charter: "सुरक्षा व सनद",
+      admin_map_title: "नाशिक जिल्हा प्रशासकीय नकाशा व विश्लेषण",
+      admin_role_badge: "कार्यकारी नियंत्रण कक्ष",
+      admin_map_subtitle: "सार्वजनिक सेवा तक्रारींचे क्षेत्रीय निरीक्षण, प्रभागनिहाय तटस्थ कार्यभार, वैधानिक जबाबदारी पडताळणी व सांद्रता विश्लेषण.",
+      stat_admin_total: "नोंदवलेली स्वतंत्र प्रकरणे",
+      stat_admin_received: "नवीन प्राप्त",
+      stat_admin_review: "पुनरावलोकन प्रलंबित",
+      stat_admin_pending: "संस्थेकडे प्रलंबित",
+      stat_admin_overdue: "मुदत संपलेली / तातडीची",
+      stat_admin_resolved: "निवारण / बंद झालेली",
       dash_title: "नाशिक जिल्हा सार्वजनिक सेवा आढावा",
       dash_subtitle: "ग्रामीण व शहरी नाशिकमधील नागरिकांच्या तक्रारी, एकत्रित सामूहिक मुद्दे व संस्थांच्या अधिकृत प्रतिसादांचे पारदर्शक निरीक्षण.",
       btn_raise_concern: "समस्या नोंदवा",
@@ -318,6 +338,7 @@
 
     // Trigger sub-module re-renders
     if (window.renderDashboard) window.renderDashboard();
+    if (window.renderAdminDashboard) window.renderAdminDashboard();
     if (window.renderAuthorityQueue) window.renderAuthorityQueue();
     if (window.renderGovernanceExplorer) window.renderGovernanceExplorer();
   };
@@ -344,6 +365,8 @@
     // Refresh views if needed
     if (targetTabId === 'tab-dashboard' && window.renderDashboard) {
       window.renderDashboard();
+    } else if (targetTabId === 'tab-admin-map' && window.renderAdminDashboard) {
+      window.renderAdminDashboard();
     } else if (targetTabId === 'tab-authority' && window.renderAuthorityQueue) {
       window.renderAuthorityQueue();
     } else if (targetTabId === 'tab-governance' && window.renderGovernanceExplorer) {
@@ -372,6 +395,7 @@
     window.setLanguage('en');
     if (window.initReportingWizard) window.initReportingWizard();
     if (window.initAuthorityWorkspace) window.initAuthorityWorkspace();
+    if (window.initAdminMapAndAnalytics) window.initAdminMapAndAnalytics();
   });
 
   async function loadInitialData() {

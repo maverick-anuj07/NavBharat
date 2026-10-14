@@ -55,6 +55,10 @@
           <span class="tab-icon" aria-hidden="true">✍️</span>
           <span class="tab-label" data-i18n="nav_report">Submit Issue</span>
         </button>
+        <button class="nav-tab-btn" data-tab="tab-admin-map" id="btn-tab-admin-map" role="tab" aria-selected="false" aria-controls="tab-admin-map">
+          <span class="tab-icon" aria-hidden="true">🗺️</span>
+          <span class="tab-label" data-i18n="nav_admin_map">Admin Map & Analytics</span>
+        </button>
         <button class="nav-tab-btn" data-tab="tab-authority" id="btn-tab-authority" role="tab" aria-selected="false" aria-controls="tab-authority">
           <span class="tab-icon" aria-hidden="true">🏛️</span>
           <span class="tab-label" data-i18n="nav_authority">Authority Desk</span>
@@ -841,7 +845,498 @@
       </div>
     </section>
 
+    <!-- ========================================== -->
+    <!-- TAB 6: ADMIN MAP & ANALYTICS DASHBOARD      -->
+    <!-- ========================================== -->
+    <section id="tab-admin-map" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-admin-map">
+      <div class="pane-header">
+        <div class="pane-title-group">
+          <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap;">
+            <h2 class="pane-title" data-i18n="admin_map_title">Nashik District Administrative Map & Analytics</h2>
+            <span class="role-badge" data-i18n="admin_role_badge">Operational Intelligence Desk</span>
+          </div>
+          <p class="pane-subtitle" data-i18n="admin_map_subtitle">
+            Spatial monitoring of public service grievances, neutral ward-level operational workloads, statutory routing verification, and issue concentration trends across Nashik.
+          </p>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.35rem;">
+          <span class="banner-badge" id="admin-data-freshness">Live Local Snapshot • Sample Demo Data</span>
+          <span class="privacy-tag">🛡️ Privacy Enforced • Coarse Coordinates Only</span>
+        </div>
+      </div>
+
+      <!-- Statistical Summary Cards (Filter Responsive) -->
+      <div class="metrics-grid admin-metrics-grid" id="admin-stat-cards">
+        <div class="metric-card">
+          <div class="metric-icon" aria-hidden="true">📊</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-admin-total">12</div>
+            <div class="metric-label" data-i18n="stat_admin_total">Distinct Cases Logged</div>
+            <small style="font-size:0.7rem; color:var(--text-dim);" id="stat-admin-sub-total">174 citizen submissions</small>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" aria-hidden="true">📥</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-admin-received">2</div>
+            <div class="metric-label" data-i18n="stat_admin_received">Newly Received</div>
+            <small style="font-size:0.7rem; color:var(--text-dim);">Demilitarized Intake</small>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" aria-hidden="true">📋</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-admin-review" style="color:var(--amber);">3</div>
+            <div class="metric-label" data-i18n="stat_admin_review">Awaiting Review</div>
+            <small style="font-size:0.7rem; color:var(--text-dim);">Corroboration Triage</small>
+          </div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon" aria-hidden="true">🏛️</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-admin-pending" style="color:var(--primary);">3</div>
+            <div class="metric-label" data-i18n="stat_admin_pending">Pending With Owner</div>
+            <small style="font-size:0.7rem; color:var(--text-dim);">Work Orders Active</small>
+          </div>
+        </div>
+
+        <div class="metric-card" style="border-color:rgba(239, 68, 68, 0.4); background:linear-gradient(135deg, rgba(239,68,68,0.08) 0%, rgba(19,31,55,0.85) 100%);">
+          <div class="metric-icon" aria-hidden="true">⚠️</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-admin-overdue" style="color:#ef4444;">3</div>
+            <div class="metric-label" data-i18n="stat_admin_overdue">Overdue / Needs Attention</div>
+            <small style="font-size:0.7rem; color:var(--text-dim);">Human Triage Target</small>
+          </div>
+        </div>
+
+        <div class="metric-card highlight-metric">
+          <div class="metric-icon" aria-hidden="true">✅</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-admin-resolved">4</div>
+            <div class="metric-label" data-i18n="stat_admin_resolved">Resolved / Closed</div>
+            <small style="font-size:0.7rem; color:var(--text-dim);"><span id="stat-admin-closed">1</span> closed with reason</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters & Search Toolbar -->
+      <div class="filter-toolbar" role="search" aria-label="Admin Map Filters">
+        <div class="search-input-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="text" id="admin-search-input" class="form-input search-input" placeholder="Filter by keyword, ward, taluka, or reference ID..." aria-label="Search map records">
+        </div>
+
+        <div class="filter-select-group">
+          <div class="filter-item">
+            <label for="admin-filter-domain" class="filter-label">Domain:</label>
+            <select id="admin-filter-domain" class="form-select form-select-sm">
+              <option value="all">All Domains</option>
+              <option value="roads_infrastructure">Roads & Infrastructure</option>
+              <option value="water_sanitation">Water & Sanitation</option>
+              <option value="education_examinations">Education & Exams</option>
+              <option value="healthcare">Healthcare Access</option>
+              <option value="worker_service_disruption">Worker / Disruption</option>
+              <option value="environment">Environment</option>
+              <option value="public_administration">Public Administration</option>
+              <option value="collective_concern_event">Collective Assembly</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="admin-filter-status" class="filter-label">Status:</label>
+            <select id="admin-filter-status" class="form-select form-select-sm">
+              <option value="all">All Statuses</option>
+              <option value="Received">Received</option>
+              <option value="Awaiting human review">Awaiting Review</option>
+              <option value="Corroboration review">Corroboration Review</option>
+              <option value="Referred to verified service owner">Referred to Owner</option>
+              <option value="Response received">Response Received</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed with reason">Closed with Reason</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="admin-filter-urgency" class="filter-label">Urgency:</label>
+            <select id="admin-filter-urgency" class="form-select form-select-sm">
+              <option value="all">All Urgency</option>
+              <option value="urgent_overdue">🔴 Overdue / Urgent</option>
+              <option value="near_due">🟠 Near Due / Attention</option>
+              <option value="awaiting_review">🟡 Pending Review</option>
+              <option value="resolved">🟢 Resolved / Closed</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="admin-filter-taluka" class="filter-label">Taluka:</label>
+            <select id="admin-filter-taluka" class="form-select form-select-sm">
+              <option value="all">All 15 Talukas</option>
+              <option value="Nashik">Nashik</option>
+              <option value="Niphad">Niphad</option>
+              <option value="Dindori">Dindori</option>
+              <option value="Sinnar">Sinnar</option>
+              <option value="Malegaon">Malegaon</option>
+              <option value="Igatpuri">Igatpuri</option>
+              <option value="Yeola">Yeola</option>
+              <option value="Trimbakeshwar">Trimbakeshwar</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="admin-filter-date" class="filter-label">Window:</label>
+            <select id="admin-filter-date" class="form-select form-select-sm">
+              <option value="all">All Time</option>
+              <option value="7d">Last 7 Days</option>
+              <option value="14d">Last 14 Days</option>
+              <option value="30d">Last 30 Days</option>
+            </select>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <span class="info-pill" id="admin-filter-count-badge" style="display:none; background:var(--primary); color:#000; font-weight:800;">0 active</span>
+            <button class="btn btn-outline btn-sm" id="admin-reset-filters-btn" title="Reset all filters">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Map Card -->
+      <div class="admin-map-card">
+        <div class="map-toolbar">
+          <div class="map-toolbar-left">
+            <span id="map-provider-badge" class="info-pill" style="background:rgba(56,189,248,0.15); color:var(--primary);">Offline Local Mock Map (Nashik Pilot)</span>
+            
+            <!-- Layer Toggle: Pins vs Coarse Concentration -->
+            <div class="lang-switch-box" role="group" aria-label="Map Layer Toggle">
+              <button class="lang-btn active" id="btn-map-mode-pins" title="Show individual issue markers">📍 Issue Pins</button>
+              <button class="lang-btn" id="btn-map-mode-conc" title="Aggregate into coarse area concentration density">🫧 Concentration Layer</button>
+            </div>
+
+            <!-- View Mode Switch: Map vs Accessible Table -->
+            <div class="lang-switch-box" role="group" aria-label="View Mode Switch">
+              <button class="lang-btn active" id="btn-view-map">🗺️ Map</button>
+              <button class="lang-btn" id="btn-view-table">📋 Accessible Table</button>
+            </div>
+          </div>
+
+          <!-- Accessible Color & Symbol Legend -->
+          <div class="map-legend-bar" aria-label="Map Attention Legend">
+            <span class="legend-chip chip-red" title="Urgent / Overdue">
+              <span class="legend-sym" aria-hidden="true">!</span> Overdue / Urgent
+            </span>
+            <span class="legend-chip chip-orange" title="Approaching Due Date">
+              <span class="legend-sym" aria-hidden="true">⏱</span> Near Due
+            </span>
+            <span class="legend-chip chip-yellow" title="Awaiting Human Review">
+              <span class="legend-sym" aria-hidden="true">📋</span> In Triage
+            </span>
+            <span class="legend-chip chip-green" title="Resolved or Closed">
+              <span class="legend-sym" aria-hidden="true">✓</span> Resolved
+            </span>
+          </div>
+        </div>
+
+        <!-- Map Canvas (Active by default) -->
+        <div id="admin-map-container" class="map-canvas-wrapper">
+          <div id="admin-map-canvas" class="admin-map-viewport" role="region" aria-label="Interactive Map of Nashik District">
+            <!-- Rendered by admin_map.js (Google Maps or Local SVG Map) -->
+          </div>
+        </div>
+
+        <!-- Accessible Table Alternative View (Hidden by default) -->
+        <div id="admin-map-table-view" class="map-table-wrapper" style="display:none;">
+          <div class="audit-table-wrapper">
+            <table class="audit-table" aria-label="Tabular list of mapped issues">
+              <thead>
+                <tr>
+                  <th scope="col">Case ID</th>
+                  <th scope="col">Attention / SLA</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Domain</th>
+                  <th scope="col">Coarse Area</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Voices</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-map-table-rows">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="map-footer-note">
+          <span>⚠️ <strong>Traffic Separation Notice:</strong> The Issue Concentration layer represents civic grievance volume from CivicLoop records; it does NOT use road traffic layers.</span>
+          <span style="color:var(--emerald);">🕊️ <strong>Assembly Protection:</strong> Protests and worker assemblies are treated as civic listening topics; zero participant tracking.</span>
+        </div>
+      </div>
+
+      <!-- Category and Area Analytics Section -->
+      <div class="analytics-section">
+        <div class="section-title-bar">
+          <div class="title-with-pill">
+            <h3 class="section-heading">Category & Area Analytics</h3>
+            <span class="info-pill">Operational Performance Metrics</span>
+          </div>
+          <span class="section-note">Granular breakdown of intake velocity, operational turnaround, and resolution efficiency</span>
+        </div>
+
+        <!-- 6 Performance Metrics Cards -->
+        <div class="metrics-grid" style="margin-bottom:1.5rem;">
+          <div class="metric-card">
+            <div class="metric-data">
+              <div class="metric-value" id="metric-resolution-pct" style="color:var(--emerald);">33%</div>
+              <div class="metric-label">Resolution Rate</div>
+              <small style="font-size:0.7rem; color:var(--text-dim);">4 of 12 closed or resolved</small>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-data">
+              <div class="metric-value" id="metric-median-review">1.8 hrs</div>
+              <div class="metric-label">Median Time to First Review</div>
+              <small style="font-size:0.7rem; color:var(--text-dim);">Human Triage Target: < 4 hrs</small>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-data">
+              <div class="metric-value" id="metric-median-response">1.4 days</div>
+              <div class="metric-label">Median Time to First Response</div>
+              <small style="font-size:0.7rem; color:var(--text-dim);">Official Work Order Dispatched</small>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-data">
+              <div class="metric-value" id="metric-median-resolution">3.8 days</div>
+              <div class="metric-label">Median Time to Resolution</div>
+              <small style="font-size:0.7rem; color:var(--text-dim);">Physical Remediation SLA</small>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-data">
+              <div class="metric-value" id="metric-overdue-count" style="color:#ef4444;">3</div>
+              <div class="metric-label">Overdue Cases</div>
+              <small style="font-size:0.7rem; color:var(--text-dim);">Breached Citizen Charter Target</small>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-data">
+              <div class="metric-value" id="metric-reopen-rate">0.0%</div>
+              <div class="metric-label">Case Reopen Rate</div>
+              <small style="font-size:0.7rem; color:var(--text-dim);">Zero post-closure disputes</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Charts Grid -->
+        <div class="analytics-grid-2">
+          <!-- Domain Distribution -->
+          <div class="analytics-chart-card">
+            <h4 class="chart-card-title">Issues by Civic Domain</h4>
+            <div class="analytics-bar-chart" id="admin-domain-chart">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Status Distribution -->
+          <div class="analytics-chart-card">
+            <h4 class="chart-card-title">Pipeline Lifecycle Distribution</h4>
+            <div class="analytics-bar-chart" id="admin-status-chart">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Open-Age Buckets -->
+        <div class="records-table-card" style="margin-top:1.5rem; margin-bottom:1.5rem;">
+          <h4 class="chart-card-title" style="margin-bottom:0.75rem;">Open Cases by Age Buckets</h4>
+          <div class="age-bucket-grid" id="admin-age-buckets">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Volume Caveat Banner -->
+        <div class="legal-disclaimer-box">
+          <strong>📊 Data Quality & Volume Caveat:</strong>
+          <p style="margin-top:0.25rem; font-size:0.8rem; color:var(--text-muted);">
+            Submission volume measures <em>reports received by the platform</em>, not objective infrastructure decay, negligence, or institutional fault. Talukas differ in resident population density, smartphone connectivity, digital literacy, and service coverage. Distinct issues are counted separately from clustered co-reports to prevent double-counting.
+          </p>
+        </div>
+      </div>
+
+      <!-- Ward and Service-Office Workload View -->
+      <div class="workload-section" style="margin-top:2.5rem;">
+        <div class="section-title-bar">
+          <div class="title-with-pill">
+            <h3 class="section-heading">Ward & Service-Office Operational Workload View</h3>
+            <span class="info-pill" style="background:rgba(99,102,241,0.15); color:#a5b4fc;">Neutral Queue Balancing</span>
+          </div>
+          <span class="section-note">Operational monitoring of assigned case volume, response turnaround, and verified jurisdiction coverage</span>
+        </div>
+
+        <div class="records-table-card">
+          <div class="audit-table-wrapper">
+            <table class="audit-table" aria-label="Ward and Office Workload Table">
+              <thead>
+                <tr>
+                  <th scope="col">Ward Office / Division</th>
+                  <th scope="col">Service Custodian Role & Holder</th>
+                  <th scope="col">Total Assigned</th>
+                  <th scope="col">Open Cases</th>
+                  <th scope="col">Overdue</th>
+                  <th scope="col">Resolved</th>
+                  <th scope="col">Med. Response</th>
+                  <th scope="col">Med. Age</th>
+                  <th scope="col">Mapping Source & Verification</th>
+                </tr>
+              </thead>
+              <tbody id="admin-workload-table-rows">
+                <!-- Dynamically populated by admin_map.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="workload-neutrality-note">
+            <strong>⚖️ Workload Neutrality Notice:</strong>
+            This view is maintained strictly as an operational queue-management aid to balance department resources and prevent bottlenecks. CivicLoop <strong>never publishes "worst officer" rankings, blame scores, or league tables</strong>. Report counts reflect civic engagement, reporting access, and geographic size—never individual officer guilt or malfeasance.
+          </div>
+        </div>
+      </div>
+
+      <!-- Institutional Hierarchy & Responsibility Explainer ("Who handles this?") -->
+      <div class="hierarchy-explainer-section" style="margin-top:2.5rem; margin-bottom:2.5rem;">
+        <div class="section-title-bar">
+          <div class="title-with-pill">
+            <h3 class="section-heading">Institutional Responsibility Explainer: "Who Handles This?"</h3>
+            <span class="info-pill" style="background:rgba(16,185,129,0.15); color:#34d399;">Statutory Mapping</span>
+          </div>
+          <span class="section-note">Inspect verified routing trajectories from citizen report to operational owner and appellate oversight</span>
+        </div>
+
+        <div class="polity-overview-card">
+          <div style="display:flex; align-items:center; gap:1.25rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+            <div class="filter-item">
+              <label for="explainer-domain-select" class="filter-label">Select Issue Domain:</label>
+              <select id="explainer-domain-select" class="form-select">
+                <option value="roads_infrastructure">Roads & Infrastructure</option>
+                <option value="water_sanitation">Water & Sanitation</option>
+                <option value="education_examinations">Education & Exams</option>
+                <option value="healthcare">Healthcare Access</option>
+                <option value="worker_service_disruption">Worker & Transit Disruption</option>
+                <option value="environment">Environment & Pollution</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <label for="explainer-taluka-select" class="filter-label">Select Locality / Taluka:</label>
+              <select id="explainer-taluka-select" class="form-select">
+                <option value="Nashik">Nashik (Urban Municipal Corporation)</option>
+                <option value="Niphad">Niphad (Rural Zilla Parishad)</option>
+                <option value="Dindori">Dindori (Rural Tribal Block)</option>
+                <option value="Sinnar">Sinnar (Semi-Urban / MIDC)</option>
+                <option value="Malegaon">Malegaon (Municipal Corporation / SDO)</option>
+                <option value="Yeola">Yeola (Municipal Council)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="explainer-result-cards">
+            <!-- Dynamically populated by admin_map.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- Admin Marker Detail Inspection Modal -->
+  <div class="modal-backdrop hidden" id="admin-issue-modal" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="admin-modal-title" style="font-size:1.15rem; color:#ffffff;">Privacy-Safe Issue Summary</h3>
+        <button class="modal-close-btn" onclick="window.closeAdminIssueModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body" id="admin-modal-body">
+        <!-- Rendered by admin_map.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Route Correction Modal -->
+  <div class="modal-backdrop hidden" id="route-correction-modal" role="dialog" aria-modal="true" aria-labelledby="correct-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="correct-modal-title" style="font-size:1.15rem; color:#ffffff;">Correct Service Mandate Routing</h3>
+        <button class="modal-close-btn" onclick="window.closeRouteCorrectionModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">
+          Current Assigned Service Body: <strong id="correct-current-institution" style="color:#ffffff;"></strong>
+        </p>
+        <div class="form-group">
+          <label for="correct-route-select" class="form-label">Reassign To Verified Service Body *</label>
+          <select id="correct-route-select" class="form-select">
+            <option value="Nashik Municipal Corporation - Public Works Dept">Nashik Municipal Corporation - Public Works Dept (Urban)</option>
+            <option value="Public Works Department (PWD) - Nashik Division">Public Works Department (PWD) - Nashik Division (Rural)</option>
+            <option value="Nashik Zilla Parishad - Rural Water Supply Department">Nashik Zilla Parishad - Rural Water Supply (ZP RWS)</option>
+            <option value="NMC Water Supply & Sewerage Department">NMC Water Supply & Sewerage Department (Urban)</option>
+            <option value="District Health Office (DHO) - Nashik Zilla Parishad">District Health Office (DHO ZP)</option>
+            <option value="District Civil Hospital Nashik / DHS Maharashtra">District Civil Hospital Nashik</option>
+            <option value="Nashik Divisional Board - MSBSHSE">Nashik Divisional Board - MSBSHSE (Education)</option>
+            <option value="Maharashtra Pollution Control Board (MPCB) Nashik">MPCB Regional Office Nashik</option>
+            <option value="Office of Additional Labour Commissioner Nashik">Labour Commissionerate Nashik</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="correct-route-reason" class="form-label">Auditable Correction Ground *</label>
+          <textarea id="correct-route-reason" rows="3" class="form-textarea" placeholder="State reason: e.g. Physical road asset is outside municipal limits and falls under State PWD MDR classification..."></textarea>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.5rem; margin-top:1rem;">
+          <button class="btn btn-outline btn-sm" onclick="window.closeRouteCorrectionModal()">Cancel</button>
+          <button class="btn btn-primary btn-sm" onclick="window.submitRouteCorrection()">Confirm & Log Correction</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Maps API Key Setup Modal -->
+  <div class="modal-backdrop hidden" id="google-key-modal" role="dialog" aria-modal="true" aria-labelledby="google-key-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="google-key-title" style="font-size:1.15rem; color:#ffffff;">Google Maps Platform Configuration</h3>
+        <button class="modal-close-btn" onclick="window.closeGoogleMapsKeyModal()" aria-label="Close modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.55; margin-bottom:1rem;">
+          CivicLoop prefers Google Maps Platform’s Maps JavaScript API as the official basemap. To preserve security, no API keys are stored in Git.
+        </p>
+
+        <div class="ai-safeguard-box" style="margin-bottom:1rem;">
+          <strong>🔐 Key Security & Restriction Best Practices:</strong>
+          <ul style="margin-top:0.3rem; padding-left:1.2rem; font-size:0.78rem; color:#cbd5e1; line-height:1.5;">
+            <li>Set HTTP Referrer restrictions in Google Cloud Console: e.g. <code>http://localhost:3000/*</code></li>
+            <li>Restrict API scope exclusively to <strong>Maps JavaScript API</strong>.</li>
+            <li>Never commit API keys into source control or push to public repositories.</li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <label for="input-google-maps-key" class="form-label">Enter Google Maps API Key for this Session:</label>
+          <input type="password" id="input-google-maps-key" class="form-input" placeholder="AIzaSy...">
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1rem; flex-wrap:wrap; gap:0.5rem;">
+          <button class="btn btn-outline btn-sm" onclick="window.clearGoogleMapsKey()">Use Offline Local Mock Map</button>
+          <div style="display:flex; gap:0.5rem;">
+            <button class="btn btn-outline btn-sm" onclick="window.closeGoogleMapsKeyModal()">Cancel</button>
+            <button class="btn btn-primary btn-sm" onclick="window.saveGoogleMapsKey()">Save & Load Google Map</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Issue Detail Modal -->
   <div class="modal-backdrop hidden" id="issue-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-issue-title">
@@ -882,5 +1377,6 @@
   <script src="js/reporting.js"></script>
   <script src="js/authority.js"></script>
   <script src="js/governance.js"></script>
+  <script src="js/admin_map.js"></script>
 </body>
 </html>

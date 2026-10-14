@@ -85,3 +85,69 @@ A case moves through seven rigorously auditable states:
 * **Runtime:** Standard Node.js (`http`, `fs`, `path`).
 * **Client:** Accessible, semantic HTML5, Vanilla CSS3 (high contrast, responsive grid), and vanilla ES6 modules.
 * **Portability:** Operates 100% offline without external cloud dependencies, API keys, or paid software tiers.
+
+---
+
+## 5. Admin Map & Spatial Analytics Architecture
+
+```
++---------------------------------------------------------------------------------------+
+|                             MAP PRESENTATION ENGINE                                   |
+|                                                                                       |
+|   +------------------------------------+   +--------------------------------------+   |
+|   |  PREFERRED PROVIDER: GOOGLE MAPS   |   |     OFFLINE LOCAL FALLBACK PROVIDER  |   |
+|   |  - Loaded dynamically if key valid |   |   - High-Fidelity Nashik Vector Map  |   |
+|   |  - Centered on Nashik (20.0, 73.8) |   |   - 15 Talukas GeoJSON / SVG Shapes  |   |
+|   |  - API restrictions enforced       |   |   - 100% Offline, Zero Key Required  |   |
+|   +-----------------+------------------+   +-------------------+------------------+   |
+|                     |                                          |                      |
+|                     +--------------------+---------------------+                      |
+|                                          |                                            |
+|                                          v                                            |
+|                  +----------------------------------------------+                     |
+|                  |     DUAL-MODE VISUALIZATION OVERLAY          |                     |
+|                  | 1. Issue Pins (Red/Orange/Yellow/Green + Sym)|                     |
+|                  | 2. Issue Concentration Layer (Coarse Taluka) |                     |
+|                  +----------------------------------------------+                     |
++------------------------------------------+--------------------------------------------+
+                                           |
+                                           v
++---------------------------------------------------------------------------------------+
+|                            PRIVACY & RIGHTS ENFORCEMENT                               |
+|  - Strictly Coarse Coordinates: Taluka / Ward centroids only (no personal GPS)         |
+|  - Assembly Safeguard: Protests/strikes mapped as service issues, never people/crowds  |
+|  - Zero Tracking: No participant markers, movement trails, or police intelligence feeds|
+|  - Separate from Traffic: Issue concentration != vehicular congestion                  |
++---------------------------------------------------------------------------------------+
+```
+
+### A. Dual-Mode Map Strategy (Google Maps Platform & Offline Fallback)
+1. **Google Maps Platform (Maps JavaScript API):**
+   * Configured via environment variable `GOOGLE_MAPS_API_KEY` or through the secure in-browser modal.
+   * Dynamically loads `maps.googleapis.com/maps/api/js?key=...&libraries=places,geometry`.
+   * **Security Best Practice:** Recommended configuration includes:
+     - HTTP Referrer Restrictions: Restrict key usage to `localhost:3000/*` and production URLs.
+     - API Restrictions: Limit scope strictly to "Maps JavaScript API".
+     - Budget / Quota Alerts: Configure Google Cloud billing budget alerts to prevent unexpected spend.
+   * **Never in Source Control:** The API key is stored only in runtime environment or session memory, never committed to Git.
+2. **Offline High-Fidelity Local Vector Map:**
+   * Provided natively when no API key is detected or network is unreachable.
+   * Renders an authentic geographic SVG of Nashik District encompassing all 15 talukas (Nashik, Malegaon, Niphad, Sinnar, Dindori, Igatpuri, Kalwan, Baglan, Yeola, Chandwad, Nandgaon, Trimbakeshwar, Peth, Surgana, Deola) with interactive projection and hover tooltips.
+   * Guarantees judges and evaluators can inspect 100% of spatial functionality without third-party credentials.
+
+### B. Deprecation Notice: Prohibition of `HeatmapLayer`
+* Google Maps Platform has officially deprecated and decommissioned `google.maps.visualization.HeatmapLayer`.
+* CivicLoop implements a custom, maintainable **Issue Concentration Layer**:
+  - Aggregates distinct issues and related submissions by coarse taluka / ward polygon.
+  - Dynamically calculates issue density, urgency weighting, and verification status.
+  - Renders proportional geographic concentration rings with distinct coloration.
+  - **Distinction from Traffic:** Google Traffic (`TrafficLayer`) measures road vehicular velocity. CivicLoop concentration measures public-service issue saturation. CivicLoop strictly avoids conflating the two.
+
+### C. Neutral Workload & Operational Queue Management
+* The Ward & Service-Office Workload View is designed as an operational queue-balancing aid for administrative supervisors.
+* **Ethics Charter:**
+  1. No "worst officer" labels, blame scores, league tables, or punitive AI rankings.
+  2. Sorting by open/overdue count is neutral queue triage.
+  3. Contextual indicators (jurisdiction population, staffing vacancies, historic backlog, transfer dates) must accompany any workload view.
+  4. Current officers' names appear only if verified from official state gazettes; otherwise labeled as `Holder Not Verified`.
+  5. Personal telephone numbers and off-duty locations of officials are completely shielded.

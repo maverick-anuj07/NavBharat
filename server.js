@@ -315,6 +315,64 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (pathname === '/api/config' && method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      google_maps_configured: !!process.env.GOOGLE_MAPS_API_KEY,
+      google_maps_key: process.env.GOOGLE_MAPS_API_KEY || null,
+      default_center: { lat: 19.9975, lng: 73.7898 },
+      pilot_region: "Nashik District, Maharashtra",
+      offline_mock_mode: !process.env.GOOGLE_MAPS_API_KEY
+    }));
+    return;
+  }
+
+  if (pathname === '/api/correct-route' && method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk; });
+    req.on('end', () => {
+      try {
+        const payload = JSON.parse(body);
+        const report = reportsState.find(r => r.id === payload.report_id);
+        if (!report) {
+          res.writeHead(404, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: "Report not found" }));
+          return;
+        }
+
+        const now = new Date().toISOString();
+        const oldOwner = report.assigned_institution;
+        const newOwner = sanitizeText(payload.new_institution);
+        const cleanReason = sanitizeText(payload.reason || 'Administrative jurisdiction correction');
+        const reviewer = sanitizeText(payload.reviewer || 'Triage Officer');
+
+        report.assigned_institution = newOwner;
+        report.history.push({
+          timestamp: now,
+          actor: reviewer,
+          action: "Routing Mandate Corrected",
+          notes: `Reassigned from "${oldOwner}" to "${newOwner}". Auditable Reason: ${cleanReason}`
+        });
+
+        auditLogs.unshift({
+          id: `AUD-${Date.now().toString().slice(-4)}`,
+          timestamp: now,
+          actor: reviewer,
+          action: "MANDATE_ROUTING_CORRECTION",
+          target_id: report.id,
+          reason: `Reassigned to ${newOwner}: ${cleanReason}`
+        });
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(report));
+      } catch (err) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: "Invalid payload" }));
+      }
+    });
+    return;
+  }
+
   if (pathname === '/api/audit-log' && method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(auditLogs));

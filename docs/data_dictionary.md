@@ -110,14 +110,52 @@ Stored in: `data/nashik_routes.json`
 ## 7. Sample Reports (`sample_reports`)
 Stored in: `data/sample_reports.json`
 
-| Field Name | Type | Safeguard Principle |
+| Field Name | Type | Description / Safeguard Principle |
 | :--- | :--- | :--- |
 | `id` | String | Random reference (`CIVIC-2026-XXXX`). Never linked to voter or citizen ID. |
 | `fictional_disclaimer` | String | **Mandatory:** `DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT` |
-| `domain` | String | Categorization domain |
+| `domain` | String | Categorization domain (one of 10 civic domains) |
 | `report_mode` | String | `individual_issue`, `shared_recurring_concern`, `event_service_update` |
 | `coarse_locality` | String | Ward, Gram Panchayat, or Taluka level. No street coordinates or house numbers. |
-| `status` | String | Lifecycle state (7-step pipeline) |
+| `coarse_coordinates` | Object | `{ "lat": Float, "lng": Float }` — Coarse taluka/ward centroid for mapping. Rooftop or personal GPS coordinates are strictly prohibited. |
+| `status` | String | Lifecycle state (7-step pipeline: `received`, `awaiting_review`, `corroboration_review`, `referred_to_service_owner`, `response_received`, `resolved`, `closed`) |
+| `human_urgency` | String | Post-triage urgency: `overdue_urgent`, `approaching_due`, `awaiting_review`, `resolved_closed` |
+| `due_date_state` | String | Compliance state: `overdue`, `due_soon`, `on_track`, `resolved` |
 | `aggregate_count` | Integer | Clustered voice count for shared community concerns |
+| `assigned_institution`| String | Statutory accountable public body (e.g., `Nashik Municipal Corporation`) |
+| `ward_office` | String | Administrative subdivision or taluka field office |
+| `assigned_role` | String | Public-service functional title (e.g., `Executive Engineer (Water Supply)`) |
+| `verified_holder_name` | String | Current officer name ONLY IF verified from official gazette. If unverified, strictly set to `Holder Not Verified`. Never inferred from crowdsourced claims. |
+| `review_duration_hours`| Float | Hours from citizen intake to initial human triage |
+| `authority_response_hours`| Float | Hours from referral to official institutional commitment |
+| `resolution_duration_hours`| Float | Hours from intake to final physical resolution (null if open) |
+| `source_verification_state`| String | `verified_statutory`, `provisional`, `in_triage` |
 | `history` | Array | Chronological, attribution-labeled action events with timestamps |
 | `ai_assistance` | Object | Heuristic suggestions with explicit uncertainty disclaimer and redaction audit |
+
+---
+
+## 8. Admin Metrics & Workload Neutrality Definitions
+
+### A. Statistical & Performance Metrics
+* **Resolution Rate:** Percentage of total distinct issues transitioned to `resolved` or `closed` within the selected timeframe: `(Resolved + Closed) / Total Issues * 100`.
+* **Median Time to First Human Review:** Median elapsed hours between case ingestion and human reviewer triage. Demonstrates administrative intake responsiveness.
+* **Median Time to First Authority Response:** Median elapsed hours between institutional referral and publication of an official work order, inspection date, or substantive response.
+* **Median Time to Resolution:** Median elapsed hours between case intake and confirmed physical rectification or documented administrative closure.
+* **Overdue Count:** Total cases where the current date exceeds the configured citizen charter SLA without a resolved status.
+* **Reopen Rate:** Proportion of resolved cases reopened due to reported recurrence or incomplete resolution: `Reopened Cases / Total Resolved * 100`.
+* **Open Age Buckets:** Categorization of active open cases into duration brackets: `< 3 days` (Fresh intake), `4–7 days` (Normal processing), `8–14 days` (Escalation watch), and `15+ days` (Critical attention required).
+
+### B. Statistical Validity & Reporting Caveats
+1. **Submission Volume vs. Real-World Prevalence:** Submission volume measures civic reporting engagement, digital connectivity, and community awareness; it is **not an objective indicator of geographic guilt or infrastructure failure**. High reporting in an active urban ward may reflect higher literacy or broadband access, whereas low reporting in a remote tribal taluka (e.g., Surgana or Peth) may reflect reporting barriers rather than superior infrastructure.
+2. **Distinct Issues vs. Aggregate Submissions:** Duplicate and related submissions are clustered into distinct issues with an `aggregate_count`. Workload metrics evaluate distinct actionable issues so that duplicate submissions do not artificially inflate operational queues.
+
+### C. Neutral Workload Queue Standards
+* **Purpose:** Queue-balancing and operational workload distribution aid for supervisory engineers and desk officers.
+* **Strict Neutrality:** Sorting by open or overdue counts is strictly a workload allocation mechanism. Labels such as "worst officer," "lazy division," blame scores, or competitive league tables are **strictly prohibited**.
+* **Mandatory Context:** Workload displays must always present:
+  - Jurisdiction population and geographic square kilometers.
+  - Staffing capacity and vacancy rates.
+  - Transfer history and tenure duration (preventing incoming officers from inheriting blame for historic backlogs).
+  - Categorization of misrouted or out-of-mandate cases awaiting transfer.
+* **Privacy of Officers:** Personal mobile numbers, private residences, and off-duty locations of public officials are never displayed. Officer names appear only when gazetted; otherwise, displayed as `Holder Not Verified`.

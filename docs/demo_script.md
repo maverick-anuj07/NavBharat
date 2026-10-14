@@ -66,3 +66,38 @@ Watch the **Civic Heuristic Assistant** box update in real time.
 > Every route, statute, and financial figure cites Tier-1 official government repositories.  
 > CivicLoop demonstrates that technology can empower civic listening, ensure institutional accountability, and protect constitutional rights.  
 > Thank you."
+
+---
+
+## 🧭 Dedicated 60–90 Second Admin Map & Analytics Walkthrough
+
+*Use this specialized demonstration flow whenever judges, mentors, or administrators request an inspection of spatial operations, executive workload management, and routing verification.*
+
+### Step 1: Accessing the Admin View & Dual-Mode Map [0:00 – 0:15]
+* **Action:** Click on the **Admin Map & Analytics** navigation tab.
+* **Narration:**  
+  *"Here is CivicLoop's administrative command center, centered squarely on Nashik District. Notice our robust architecture: if a project owner configures a restricted Google Maps Platform API key, the dashboard renders live Google satellite and street basemaps. But for offline evaluations, high-security intranets, or judges testing without credentials, CivicLoop natively renders this authentic vector map of Nashik's 15 talukas with zero external dependencies."*
+
+### Step 2: Live Filters & Statistical Summary Cards [0:15 – 0:30]
+* **Action:** Look at the top statistical cards: *Total Reports (12)*, *Newly Received (2)*, *Awaiting Review (2)*, *Pending with Authority (3)*, *Overdue / Needs Attention (3)*, and *Resolved / Closed (2)*.
+* **Action:** Change the Category filter dropdown to **"Roads & Infrastructure"**.
+* **Narration:**  
+  *"Notice how our statistical summary cards respond instantly to active filters. When I filter by 'Roads & Infrastructure', our active filter badge updates, and our overdue count isolates urgent infrastructure deficits—such as the PWD bridge approach scour in Malegaon. Every card displays data freshness and reminds reviewers that sample counts are synthetic."*
+
+### Step 3: Accessible Status Markers & Privacy-Safe Marker Summary [0:30 – 0:45]
+* **Action:** Clear the filter by clicking **Reset Filters**. Click on the **Red ⚠️ Overdue Marker** in Malegaon (`CIVIC-2026-0042`).
+* **Narration:**  
+  *"Our markers are accessible: color is never the only signal. Red represents overdue or human-reviewed urgent issues with a warning triangle; orange represents approaching due dates; yellow indicates triage pending; and green marks verified resolution.  
+  Clicking a marker opens a privacy-safe executive brief: issue reference, coarse locality, aggregate citizen voice count, responsible public office, and next action. Notice what is absent: zero reporter names, zero phone numbers, zero personal GPS coordinates, and zero unverified accusations."*
+
+### Step 4: Issue Concentration Layer vs. Traffic Layer [0:45 – 1:05]
+* **Action:** In the map control bar, toggle the switch from **"Map Pins"** to **"Issue Concentration Layer"**.
+* **Narration:**  
+  *"With one toggle, administrators can switch to our coarse-area Issue Concentration Layer. Note our technical rigor: because Google has decommissioned HeatmapLayer, we built an aggregated thematic concentration engine. Furthermore, we explicitly separate civic complaint density from Google vehicular traffic. Traffic measures car speed; CivicLoop measures public service listening."*
+
+### Step 5: Neutral Workload Balancing & Routing Explainer [1:05 – 1:30]
+* **Action:** Scroll down to the **Neutral Ward & Service-Office Workload Table**. Point to the sorting header and the officer status tags.
+* **Action:** Scroll to the **"Who handles this?" Institutional Hierarchy & Responsibility Explainer**. Click **"Correct Routing Mandate"**, switch mandate to PWD, enter justification *"State Highway asset belongs to State PWD under PWD Code Sec 44"*, and click **Save Correction**.
+* **Narration:**  
+  *"In our workload queue, we solve an essential governance challenge: administrators can balance queues without punitive blame scores or misleading 'worst officer' league tables. Current officer names appear only when verified against the official state gazette, preventing unfair personal targeting.  
+  Finally, our 'Who handles this?' explainer details the exact statutory chain under the MMC Act and Zilla Parishad Act. When an issue is misrouted, a human reviewer can correct the routing with an auditable justification—ensuring transparent institutional accountability."*

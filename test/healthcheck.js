@@ -37,6 +37,12 @@ requiredFiles.forEach(file => {
         if (!r.id || !r.domain || !r.status || !r.fictional_disclaimer) {
           errors.push(`Report ${r.id || 'unknown'} missing required fields or fictional disclaimer.`);
         }
+        if (!r.coarse_coordinates || typeof r.coarse_coordinates.lat !== 'number' || typeof r.coarse_coordinates.lng !== 'number') {
+          errors.push(`Report ${r.id} missing valid coarse_coordinates (lat/lng).`);
+        }
+        if (!r.due_date_state || !r.ward_office) {
+          errors.push(`Report ${r.id} missing due_date_state or ward_office.`);
+        }
       });
     }
 
@@ -62,7 +68,7 @@ if (errors.length > 0) {
   console.error('Validation FAILED with errors:', errors);
   process.exit(1);
 } else {
-  console.log('✓ All 4 datasets validated successfully with required schemas.\n');
+  console.log('✓ All 4 datasets validated successfully with required schemas and geo attributes.\n');
 }
 
 console.log('--- [2/3] Validating Rights & Privacy Safeguards ---');
@@ -92,30 +98,83 @@ process.env.PORT = '3099';
 require('../server.js');
 
 setTimeout(() => {
-  const req = http.get('http://localhost:3099/api/reports', res => {
+  // 1. Test /api/reports
+  http.get('http://localhost:3099/api/reports', res => {
     let body = '';
     res.on('data', chunk => body += chunk);
     res.on('end', () => {
       try {
         const parsed = JSON.parse(body);
-        if (Array.isArray(parsed) && parsed.length >= 5) {
-          console.log(`✓ HTTP GET /api/reports returned ${parsed.length} reports with status 200 OK.`);
-          console.log('\n==================================================');
-          console.log(' ALL CIVICLOOP INTEGRITY CHECKS PASSED PERFECTLY!');
-          console.log('==================================================');
-          process.exit(0);
-        } else {
+        if (!Array.isArray(parsed) || parsed.length < 5) {
           console.error('Unexpected response format from /api/reports:', body);
           process.exit(1);
         }
+        console.log(`✓ HTTP GET /api/reports returned ${parsed.length} reports with status 200 OK.`);
+
+        // 2. Test /api/config
+        http.get('http://localhost:3099/api/config', resConfig => {
+          let confBody = '';
+          resConfig.on('data', c => confBody += c);
+          resConfig.on('end', () => {
+            const conf = JSON.parse(confBody);
+            if (conf.pilot_region && conf.default_center) {
+              console.log(`✓ HTTP GET /api/config returned valid map configuration (${conf.pilot_region}).`);
+            } else {
+              console.error('Invalid config response:', confBody);
+              process.exit(1);
+            }
+
+            // 3. Test /api/correct-route
+            const postData = JSON.stringify({
+              report_id: "CIVIC-2026-0891",
+              new_institution: "Public Works Department (PWD) - Nashik Rural Division",
+              reason: "Asset boundary inspection confirmed State Highway classification",
+              reviewer: "Triage Desk Lead"
+            });
+
+            const postReq = http.request({
+              hostname: 'localhost',
+              port: 3099,
+              path: '/api/correct-route',
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(postData)
+              }
+            }, resPost => {
+              let pBody = '';
+              resPost.on('data', c => pBody += c);
+              resPost.on('end', () => {
+                const updated = JSON.parse(pBody);
+                if (updated.assigned_institution.includes("Public Works Department")) {
+                  console.log(`✓ HTTP POST /api/correct-route successfully updated mandate to PWD.`);
+                  console.log('\n==================================================');
+                  console.log(' ALL CIVICLOOP MAP & ANALYTICS CHECKS PASSED!');
+                  console.log('==================================================');
+                  process.exit(0);
+                } else {
+                  console.error('Route correction failed:', pBody);
+                  process.exit(1);
+                }
+              });
+            });
+
+            postReq.on('error', err => {
+              console.error('Error on POST /api/correct-route:', err);
+              process.exit(1);
+            });
+
+            postReq.write(postData);
+            postReq.end();
+          });
+        });
+
       } catch (e) {
         console.error('Error parsing response from /api/reports:', e);
         process.exit(1);
       }
     });
-  });
-
-  req.on('error', err => {
+  }).on('error', err => {
     console.error('Server connection test failed:', err);
     process.exit(1);
   });

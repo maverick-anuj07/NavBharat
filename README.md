@@ -36,6 +36,13 @@ CivicLoop is a prototype for reporting public-service issues or shared concerns,
   * Single Service Issue (e.g. pothole or broken valve).
   * Shared / Recurring Concern (e.g. rural PHC doctor vacancies or exam center conditions).
   * Public Event / Service Update (e.g. industrial worker transit disruption during peaceful assembly).
+* **Admin Map & Spatial Analytics Dashboard:**
+  * **Dual-Mode Map:** Google Maps Platform Maps JavaScript API when key is configured, plus an authentic offline SVG/vector map of Nashik's 15 talukas when no key or network is present.
+  * **Accessible Multi-Signal Markers:** Color + accessible iconography (Red ⚠️ overdue/urgent, Orange ⏳ approaching due, Yellow 📋 triage pending, Green ✅ resolved/closed) plus an accessible table alternative.
+  * **Switchable Concentration Layer:** Aggregated coarse-locality issue density overlay (strictly distinct from vehicular road traffic; avoids deprecated `HeatmapLayer`).
+  * **Live Reactive Statistical Cards:** Total issues, newly received, awaiting review, pending with authority, overdue, and resolved/closed.
+  * **Neutral Workload Balancing Queue:** Queue-management view grouped by verified ward office and institution without punitive blame scores, league tables, or "worst officer" labels.
+  * **"Who handles this?" Institutional Hierarchy Explainer:** Statutory mandate routing explainer with auditable human-approved routing correction.
 * **Privacy-Safe Ingestion:** Defaults to coarse locality (Taluka / Ward / Gram Panchayat). Never requests Aadhaar, student IDs, phone numbers, faces, or precise GPS coordinates.
 * **7-Step Status Lifecycle:**
   `Received` ➔ `Awaiting human review` ➔ `Corroboration review` ➔ `Referred to verified service owner` ➔ `Response received` ➔ `Resolved` ➔ `Closed with reason`.
@@ -94,6 +101,47 @@ The healthcheck validates:
 
 ---
 
+## 🗺️ Admin Panel Map & Spatial Analytics Guide
+
+The **Admin Map & Analytics Dashboard** provides administrative desk officers and supervisory engineers with spatial oversight and queue management for Nashik District:
+
+### 1. Google Maps Platform Setup (Preferred Basemap)
+* **API Key Handling:** The application reads the key from either:
+  1. Environment variable: `GOOGLE_MAPS_API_KEY="your-api-key"`
+  2. In-App Setup Modal: Click the **"Google Maps Key"** button on the Admin Map tab to configure or remove a key for the current session.
+* **Security & Source Control Guarantee:** 
+  - **Zero keys in source control:** `.gitignore` excludes `.env` and local secrets.
+  - Recommended API Restrictions in Google Cloud Console:
+    - Application Restrictions: HTTP referrers (e.g. `http://localhost:3000/*` and your domain).
+    - API Restrictions: Restrict strictly to **Maps JavaScript API**.
+    - Cost Control: Configure Google Cloud budget alerts to avoid unexpected billing.
+
+### 2. High-Fidelity Local Vector Mock Map (Offline / No-Key Mode)
+* If no API key is provided or network is unreachable, CivicLoop renders an authentic SVG vector map representing **all 15 talukas of Nashik District** (Nashik, Malegaon, Niphad, Sinnar, Dindori, Igatpuri, Kalwan, Baglan, Yeola, Chandwad, Nandgaon, Trimbakeshwar, Peth, Surgana, Deola).
+* Evaluators, judges, and developers can test all filtering, clustering, modal popups, and layer toggles **100% offline** without registering or paying for Google Cloud services.
+* The UI clearly communicates the active provider: **"Active Basemap: Local Offline Vector Map (Nashik District, 15 Talukas)"** or **"Active Basemap: Google Maps Platform (Maps JavaScript API)"**.
+
+### 3. Accessible Marker & Urgency Encodings
+Color is **never the sole signal** for issue severity:
+* 🔴 **Red ⚠️:** Overdue or urgent human-reviewed issues requiring immediate response.
+* 🟠 **Orange ⏳:** Needs attention / approaching citizen charter due date.
+* 🟡 **Yellow 📋:** Awaiting human triage review or pending departmental action.
+* 🟢 **Green ✅:** Confirmed resolved or administratively closed after human review.
+* **Accessible Alternative:** A full semantic HTML table view can be toggled on demand (`Show Accessible Table View`) for screen readers and tabular audits.
+
+### 4. Issue Concentration Layer vs. Google Traffic
+* **Deprecated HeatmapLayer Notice:** As mandated by Google Maps Platform deprecation notices, `google.maps.visualization.HeatmapLayer` is decommissioned and not used.
+* **Thematic Concentration:** CivicLoop implements a custom aggregate density layer displaying public-service issue counts and severity rings by coarse taluka.
+* **Traffic Distinction:** Google `TrafficLayer` measures motor vehicle speed. CivicLoop issue concentration measures public complaint saturation. The two are kept strictly separate.
+
+### 5. Neutral Workload Queue & Accountability Charter
+* **Operational Queue Balancing:** The workload table groups issues by verified ward office, service institution, and public-service role.
+* **No League Tables or Blame Scores:** Sorting by open/overdue cases serves purely to reallocate engineering crews and balance administrative queues. It is **never** a ranking of "worst officer" or proof of personal misconduct.
+* **Role-Holder Verification Standard:** Officer names are displayed **only if verified from the official Maharashtra State Gazette or official government directory**. Otherwise, the role is labeled as `Holder Not Verified`.
+* **Institutional Hierarchy Explainer ("Who handles this?"):** Displays the statutory appellate route under the MMC Act 1949 and ZP Act 1961, allowing authorized desk reviewers to submit auditable corrections to routing mandates with permanent log entries.
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -101,7 +149,7 @@ civicloop/
 ├── data/
 │   ├── india_governance.json    # Constitutional structure, jurisdictions, institutions, sources
 │   ├── nashik_routes.json       # Rural vs. urban service routing matrix for Nashik
-│   ├── sample_reports.json      # Fictional sample issues across 10 domains
+│   ├── sample_reports.json      # Fictional sample issues across 10 domains with geo coordinates
 │   └── economic_records.json    # Sourced fiscal federalism & fund flow records
 ├── public/
 │   ├── index.html               # Semantic, accessible, bilingual single-page app
@@ -112,11 +160,12 @@ civicloop/
 │       ├── dashboard.js         # Public feed, metrics, shared concerns, detail modal
 │       ├── reporting.js         # Citizen intake wizard, heuristic assistant, PII sanitizer
 │       ├── authority.js         # Triage queue, response composer, human escalation, audit log
+│       ├── admin_map.js         # Admin map engine, Google Maps loader, offline vector map, workload table
 │       └── governance.js        # Polity explorer, routing matrix table, source registry
 ├── docs/
-│   ├── architecture.md          # System architecture, data flow, rights model
-│   ├── data_dictionary.md       # Complete entity schemas and field descriptions
-│   ├── demo_script.md           # 3–5 minute competition demo video script
+│   ├── architecture.md          # System architecture, data flow, rights model, map design
+│   ├── data_dictionary.md       # Complete entity schemas, field descriptions, metrics standards
+│   ├── demo_script.md           # 3–5 min video script + 60–90 sec Admin Map walkthrough
 │   ├── presentation_deck_outline.md # 6–7 slide presentation deck tailored for IIT Bombay
 │   ├── ai_tool_disclosure.md    # Draft AI tool usage disclosure for student verification
 │   └── hsc_submission_checklist.md  # Step-by-step portal submission & deadline reconciliation
