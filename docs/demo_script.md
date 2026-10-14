@@ -15,7 +15,7 @@
 ## Click-by-Click Storyboard & Script
 
 ### [0:00 – 0:40] Introduction & The Problem
-**Visual:** Browser opens to `http://localhost:3000` on the **Public Dashboard**. Mouse hovers over the brand title "CivicLoop (नागरिक चक्र)" and the prototype banner.
+**Visual:** Browser opens to `http://localhost:3000` displaying the **NavBharat Civic Intelligence Overview Dashboard**. The camera highlights the top dark navy navbar (`CivicLoop | Civic Issue Intelligence • Nashik Pilot Demo`), the search bar, the left sidebar, the 4 top metric cards (Total reports 128, Awaiting review 24, Referred 61, Resolved 43), the Nashik aggregate map, recent issue clusters, and the routing explanation card.
 > **Presenter (Voiceover):**  
 > "Namaste esteemed judges. I am representing Team Nav Bharat as a solo participant in Hack for Social Cause 2027.  
 > Today in India, when citizens face a broken road, a water pipeline rupture, an exam center irregularity, or a healthcare disruption, they face a bewildering maze. Which authority is responsible? Is it the Municipal Corporation, the State PWD, the Zilla Parishad, or the local Panchayat?  
@@ -24,15 +24,14 @@
 
 ---
 
-### [0:40 – 1:30] Public Dashboard & Shared Concerns Aggregation
-**Visual:** Scroll through the Metrics Counters and spotlight cards. Click on the **Healthcare Access** card (Dindori PHC) and **Education** card (College Road). Toggle language button to **मराठी**, then back to **English**.
+### [0:40 – 1:30] Overview Dashboard & Recent Issue Clusters
+**Visual:** Mouse hovers over the 4 metric cards, then inspects the **Nashik Aggregate Map** with the Godavari river and pins (Urgent/overdue, Needs attention, Awaiting review, Resolved). Click on the **Road damage** cluster thumbnail (College Road) and **Water leak** (Panchavati) in Recent issue clusters. Toggle language button to **मराठी**, then back to **EN**.
 > **Presenter (Voiceover):**  
-> "On the public dashboard, we see real-time, privacy-safe civic tracking.  
-> Notice this key breakthrough: **Priority Shared Concerns**. Rather than individual citizens screaming into a void, CivicLoop aggregates related grievances by domain, timeframe, and coarse locality.  
-> Here in Dindori rural taluka, 18 separate resident notifications regarding emergency doctor vacancies and anti-venom stockouts are clustered together.  
-> In College Road, 31 student concerns regarding exam center conditions and paper leak rumors are grouped.  
-> Crucially, **we protect democratic assembly**: our charter strictly prohibits identifying students, tracking demonstrators, or profiling protesters.  
-> And with a single click, our interface switches seamlessly between English and Marathi."
+> "On our overview command dashboard, we see real-time, privacy-safe civic tracking.  
+> At a glance, administrators monitor 128 total reports, with 24 awaiting review, 61 referred to statutory owners, and 43 resolved.  
+> Notice this key breakthrough: **Aggregate Spatial Intelligence**. On our central Nashik map, issue markers highlight service pressure along the Godavari river corridors—from Panchavati to College Road and CIDCO.  
+> In our Recent Issue Clusters, verified photo evidence of road damage and water pipeline leaks gives field teams instant visibility.  
+> And with a single click on our top bar, our interface switches seamlessly between English and Marathi."
 
 ---
 

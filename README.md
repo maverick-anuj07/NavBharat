@@ -36,6 +36,13 @@ CivicLoop is a prototype for reporting public-service issues or shared concerns,
   * Single Service Issue (e.g. pothole or broken valve).
   * Shared / Recurring Concern (e.g. rural PHC doctor vacancies or exam center conditions).
   * Public Event / Service Update (e.g. industrial worker transit disruption during peaceful assembly).
+* **NavBharat Civic Intelligence Overview Dashboard:**
+  * **Top Dark Navy Navigation Bar:** Deep navy header (`#132238`) with circular teal logo, global search bar (`Search issues, locations, or keywords...`), bilingual toggle (`[EN | MR]`), and demo user profile pill.
+  * **Left Sidebar Navigation:** 6-section sidebar (Overview, Issue Map, Reports, Institution Routing, Analytics, Settings).
+  * **Top Metric Cards:** 4 live operational summary cards (Total reports: 128, Awaiting review: 24, Referred: 61, Resolved: 43) with trend indicators.
+  * **Nashik Aggregate Issue Map:** Stylized vector map showing the Godavari River, city arterial roads, key localities (**Panchavati**, **College Road**, **Nashik**, **Indira Nagar**, **CIDCO**, **Nashik Road**), zoom controls, multi-signal pin markers (🔴 `!`, 🟠 `!`, 🔵 `●`, 🟢 `✓`), and status legend.
+  * **Recent Issue Clusters:** Dedicated clusters table with image thumbnails (`road_damage.jpg`, `water_leak.jpg`, `streetlight.jpg`, `waste_collection.jpg`), location tags, status pills, and direct issue modal triggers.
+  * **Routing Explanation & Scenic Card:** Real-time service owner verification alert, jurisdiction citation, and scenic Nashik community card.
 * **Admin Map & Spatial Analytics Dashboard:**
   * **Dual-Mode Map:** Google Maps Platform Maps JavaScript API when key is configured, plus an authentic offline SVG/vector map of Nashik's 15 talukas when no key or network is present.
   * **Accessible Multi-Signal Markers:** Color + accessible iconography (Red ⚠️ overdue/urgent, Orange ⏳ approaching due, Yellow 📋 triage pending, Green ✅ resolved/closed) plus an accessible table alternative.
