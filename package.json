@@ -1,0 +1,23 @@
+{
+  "name": "civicloop",
+  "version": "1.0.0",
+  "description": "Civic listening, issue tracking, and institutional resolution prototype for Nashik district pilot (HSC 2027 Team Nav Bharat)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test/healthcheck.js"
+  },
+  "keywords": [
+    "civic-tech",
+    "governance",
+    "nashik",
+    "grievance-redressal",
+    "public-finance",
+    "hsc-2027"
+  ],
+  "author": "Team Nav Bharat",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}

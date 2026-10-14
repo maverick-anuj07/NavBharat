@@ -1,0 +1,342 @@
+[
+  {
+    "id": "CIVIC-2026-0891",
+    "fictional_disclaimer": "DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT",
+    "domain": "roads_infrastructure",
+    "report_mode": "individual_issue",
+    "title": "Severe Pothole Cluster near Panchavati Karanja Crossing",
+    "title_mr": "पंचवटी कारंजा चौकाजवळ खड्ड्यांचा मोठा त्रास",
+    "coarse_locality": "Panchavati Division (Ward 12), Nashik Municipal Corporation",
+    "locality_type": "urban",
+    "taluka": "Nashik",
+    "submitted_at": "2026-10-10T09:30:00+05:30",
+    "status": "Referred to verified service owner",
+    "status_mr": "सत्यापित सेवा मालकाकडे वर्ग",
+    "aggregate_count": 7,
+    "related_group_id": "GRP-NSK-ROAD-PAN-01",
+    "description": "Deep trench-like potholes spanning ~15 meters across the westbound lane. Two-wheelers are skidding during evening traffic. Rainwater stagnation obscures the depth.",
+    "description_mr": "पश्चिम दिशेच्या लेनवर सुमारे १५ मीटर पसरलेले खोल खड्डे. संध्याकाळच्या गर्दीत दुचाकी घसरत आहेत. साचलेल्या पाण्यामुळे खोली समजत नाही.",
+    "evidence_placeholder": "redacted_photo_road_surface.jpg (Metadata stripped; no license plates or faces)",
+    "assigned_institution": "Nashik Municipal Corporation - City Engineer & Public Works Dept",
+    "responsible_role": "Executive Engineer (Public Works - Panchavati Division)",
+    "statutory_mandate": "MMC Act 1949, Section 202 (Municipal street maintenance)",
+    "due_date": "2026-10-18T18:00:00+05:30",
+    "sla_days_standard": 5,
+    "ai_assistance": {
+      "suggested_category": "roads_infrastructure",
+      "category_confidence": "94%",
+      "suggested_routing": "Nashik Municipal Corporation (Urban)",
+      "duplicate_flag": "Likely cluster of 7 reports in Panchavati Ward 12",
+      "uncertainty_label": "Advisory heuristic only - Subject to mandatory human triage review",
+      "redaction_applied": "Reporter IP and device fingerprint discarded; coarse locality confirmed"
+    },
+    "history": [
+      {
+        "timestamp": "2026-10-10T09:30:00+05:30",
+        "actor": "Citizen Reporter (Anonymous Pseudonym #C402)",
+        "action": "Report Received",
+        "notes": "Submitted via mobile web interface with consent for coarse cluster aggregation."
+      },
+      {
+        "timestamp": "2026-10-10T11:15:00+05:30",
+        "actor": "Human Review Officer (Triage Desk, NMC Grievance Cell)",
+        "action": "Awaiting human review -> Corroboration review",
+        "notes": "Confirmed location falls on municipal road, not NHAI highway. Verified photo shows genuine asphalt erosion."
+      },
+      {
+        "timestamp": "2026-10-11T10:00:00+05:30",
+        "actor": "Triage Desk Lead",
+        "action": "Referred to verified service owner",
+        "notes": "Assigned Work Order #NMC-PW-2026-881 to Panchavati Sub-division asphalt patching crew. Target repair date: Oct 18."
+      }
+    ]
+  },
+  {
+    "id": "CIVIC-2026-0892",
+    "fictional_disclaimer": "DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT",
+    "domain": "water_sanitation",
+    "report_mode": "shared_recurring_concern",
+    "title": "Main Pipeline Burst and 4-Day Water Disruption in Pimpalgaon Baswant",
+    "title_mr": "पिंपळगाव बसवंत येथे मुख्य पाईपलाईन फुटल्याने ४ दिवस पाणीपुरवठा खंडित",
+    "coarse_locality": "Pimpalgaon Baswant Gram Panchayat Area, Niphad Taluka",
+    "locality_type": "rural",
+    "taluka": "Niphad",
+    "submitted_at": "2026-10-09T08:15:00+05:30",
+    "status": "Response received",
+    "status_mr": "संस्थेकडून प्रतिसाद प्राप्त",
+    "aggregate_count": 23,
+    "related_group_id": "GRP-NIP-WATER-04",
+    "description": "Major feeder valve ruptured near old market yard. Approximately 400 households in ward 3 and 4 without potable water for 96 hours. Tanker schedule unannounced.",
+    "description_mr": "जुना बाजार आवाराजवळ मुख्य फीडर व्हॉल्व्ह फुटला. प्रभाग ३ आणि ४ मधील सुमारे ४०० कुटुंबांना ९६ तास पिण्याचे पाणी नाही. टँकरचे वेळापत्रक जाहीर नाही.",
+    "evidence_placeholder": "redacted_photo_water_leak.jpg (Cleaned GPS; coarse tag Niphad)",
+    "assigned_institution": "Nashik Zilla Parishad - Rural Water Supply Department (ग्रामीण पाणी पुरवठा विभाग)",
+    "responsible_role": "Sectional Engineer (RWS - Niphad Subdivision)",
+    "statutory_mandate": "Maharashtra Zilla Parishads & Panchayat Samitis Act, 1961 (Sec. 100)",
+    "due_date": "2026-10-13T17:00:00+05:30",
+    "sla_days_standard": 4,
+    "ai_assistance": {
+      "suggested_category": "water_sanitation",
+      "category_confidence": "96%",
+      "suggested_routing": "Nashik ZP Rural Water Supply (Rural Niphad)",
+      "duplicate_flag": "High cluster density (23 community submissions across 48 hours)",
+      "uncertainty_label": "Advisory clustering model - Requires administrative verification",
+      "redaction_applied": "Personal mobile numbers and house numbers stripped"
+    },
+    "history": [
+      {
+        "timestamp": "2026-10-09T08:15:00+05:30",
+        "actor": "Resident Group Representative (Pseudonym #W719)",
+        "action": "Report Received",
+        "notes": "Shared concern initiated with 23 verified co-signatures from local residents."
+      },
+      {
+        "timestamp": "2026-10-09T10:45:00+05:30",
+        "actor": "District Rural Triage Reviewer",
+        "action": "Referred to verified service owner",
+        "notes": "Identified as multi-village scheme asset under ZP Rural Water Supply."
+      },
+      {
+        "timestamp": "2026-10-12T14:30:00+05:30",
+        "actor": "Sectional Engineer (ZP RWS Niphad)",
+        "action": "Response received",
+        "notes": "Official response recorded: Replacement cast-iron valve received from Nashik store. Repair work commenced at 11:00 AM. 4 emergency water tankers deployed to Wards 3 & 4. Full pressure restoration expected by tomorrow 10:00 AM."
+      }
+    ]
+  },
+  {
+    "id": "CIVIC-2026-0893",
+    "fictional_disclaimer": "DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT",
+    "domain": "education_examinations",
+    "report_mode": "shared_recurring_concern",
+    "title": "College Road Exam Center Ventilation Failure & Paper Leak Misinformation Clarification",
+    "title_mr": "कॉलेज रोड परीक्षा केंद्रात हवा खेळती नसणे व पेपरफुटी अफवांचे स्पष्टीकरण",
+    "coarse_locality": "College Road Educational Zone, Nashik West Division",
+    "locality_type": "urban",
+    "taluka": "Nashik",
+    "submitted_at": "2026-10-11T13:45:00+05:30",
+    "status": "Corroboration review",
+    "status_mr": "तपासणी व पुरावा पुनरावलोकन सुरू",
+    "aggregate_count": 31,
+    "related_group_id": "GRP-NSK-EDU-EXAM-02",
+    "description": "High school exam center hall 4 has broken ceiling fans and inadequate drinking water during state pre-board tests. Social media chat rumors claiming leaked question papers are causing extreme student panic; students request official inspection and written clarification from the Divisional Board.",
+    "description_mr": "हायस्कूल परीक्षा केंद्राच्या हॉल ४ मध्ये पंखे बंद असून पिण्याच्या पाण्याची गैरसोय. सोशल मीडियावरील पेपरफुटीच्या अफवांमुळे विद्यार्थ्यांमध्ये भीती; विभागीय मंडळाकडून प्रत्यक्ष पाहणी व लेखी स्पष्टीकरणाची मागणी.",
+    "evidence_placeholder": "unverified_rumor_screenshot_redacted.png (Text sanitized; sender identity scrubbed)",
+    "assigned_institution": "Nashik Divisional Board - MSBSHSE (महाराष्ट्र राज्य माध्यमिक व उच्च माध्यमिक शिक्षण मंडळ)",
+    "responsible_role": "Divisional Secretary & Examination Flying Squad Officer",
+    "statutory_mandate": "Maharashtra Secondary & Higher Secondary Education Boards Act, 1965",
+    "due_date": "2026-10-14T12:00:00+05:30",
+    "sla_days_standard": 2,
+    "ai_assistance": {
+      "suggested_category": "education_examinations",
+      "category_confidence": "91%",
+      "suggested_routing": "MSBSHSE Nashik Divisional Board",
+      "duplicate_flag": "31 student/parent submissions; high public sensitivity",
+      "uncertainty_label": "AI DOES NOT ASSESS TRUTH OR CREDIBILITY. Rumor flags require human inspection.",
+      "redaction_applied": "Student roll numbers, school IDs, and chat usernames strictly excluded"
+    },
+    "history": [
+      {
+        "timestamp": "2026-10-11T13:45:00+05:30",
+        "actor": "Student Union Delegate (Anonymous Token #S104)",
+        "action": "Report Received",
+        "notes": "Shared collective concern filed on behalf of 31 candidates."
+      },
+      {
+        "timestamp": "2026-10-11T15:00:00+05:30",
+        "actor": "CivicLoop Human Rights & Moderation Officer",
+        "action": "Corroboration review",
+        "notes": "SAFEGUARD CHECK: Verified that submission does not identify student authors or peaceful protesters. Verified that no criminal allegations are published before Board inquiry. Escalated center facility deficit to Flying Squad."
+      }
+    ]
+  },
+  {
+    "id": "CIVIC-2026-0894",
+    "fictional_disclaimer": "DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT",
+    "domain": "healthcare",
+    "report_mode": "shared_recurring_concern",
+    "title": "Primary Health Centre (PHC) Night Emergency Doctor Vacancy and Anti-Venom Stockout",
+    "title_mr": "प्राथमिक आरोग्य केंद्रात रात्रीच्या वेळी डॉक्टर अनुपस्थिती व सर्पदंश लस तुटवडा",
+    "coarse_locality": "Dindori Rural Taluka (Covering 8 Tribal Hamlets)",
+    "locality_type": "rural",
+    "taluka": "Dindori",
+    "submitted_at": "2026-10-08T16:20:00+05:30",
+    "status": "Referred to verified service owner",
+    "status_mr": "सत्यापित सेवा मालकाकडे वर्ग",
+    "aggregate_count": 18,
+    "related_group_id": "GRP-DIN-HEALTH-01",
+    "description": "Dindori rural PHC lacks an on-duty medical officer after 8 PM. Two farmers suffering agricultural snakebites were referred 42 km to Nashik Civil Hospital due to anti-venom vial expiry. Community appeals for emergency rotational staffing and cold-chain replenishment.",
+    "description_mr": "दिंडोरी ग्रामीण प्राथमिक आरोग्य केंद्रात रात्री ८ नंतर डॉक्टर उपलब्ध नाहीत. सर्पदंश लस कालबाह्य झाल्याने दोन शेतकऱ्यांना नाशिक सिव्हिल हॉस्पिटलमध्ये पाठवावे लागले. तात्काळ डॉक्टर व लस उपलब्ध करण्याची मागणी.",
+    "evidence_placeholder": "redacted_phc_noticeboard_photo.jpg (All patient names masked)",
+    "assigned_institution": "District Health Office (DHO) - Nashik Zilla Parishad",
+    "responsible_role": "District Health Officer (DHO) & Civil Surgeon Nashik",
+    "statutory_mandate": "National Health Mission Standards; Maharashtra Public Health Delivery Norms",
+    "due_date": "2026-10-12T17:00:00+05:30",
+    "sla_days_standard": 3,
+    "ai_assistance": {
+      "suggested_category": "healthcare",
+      "category_confidence": "98%",
+      "suggested_routing": "Nashik Zilla Parishad Health Department (DHO)",
+      "duplicate_flag": "18 community notifications linked to Dindori PHC",
+      "uncertainty_label": "Advisory classification only - Mandates urgent human medical officer triage",
+      "redaction_applied": "All patient medical histories, clinical identities, and doctor personal details withheld"
+    },
+    "history": [
+      {
+        "timestamp": "2026-10-08T16:20:00+05:30",
+        "actor": "Gram Panchayat Health Vigilance Committee (Pseudonym #GP88)",
+        "action": "Report Received",
+        "notes": "Filed as rural collective public health priority."
+      },
+      {
+        "timestamp": "2026-10-08T18:00:00+05:30",
+        "actor": "District Health Triage Officer",
+        "action": "Referred to verified service owner",
+        "notes": "Notice dispatched to ZP DHO and Additional Civil Surgeon. Emergency transfer of 50 lyophilized polyvalent anti-snake venom vials initiated from central medical store."
+      }
+    ]
+  },
+  {
+    "id": "CIVIC-2026-0895",
+    "fictional_disclaimer": "DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT",
+    "domain": "worker_service_disruption",
+    "report_mode": "event_service_update",
+    "title": "Industrial Estate Shift-Worker Public Bus Route Disruption & Sanitation Concerns",
+    "title_mr": "औद्योगिक वसाहतीतील कामगारांची बस सेवा खंडित व स्वच्छता समस्या",
+    "coarse_locality": "Satpur MIDC Industrial Area, Nashik City",
+    "locality_type": "urban",
+    "taluka": "Nashik",
+    "submitted_at": "2026-10-12T07:30:00+05:30",
+    "status": "Response received",
+    "status_mr": "संस्थेकडून प्रतिसाद प्राप्त",
+    "aggregate_count": 42,
+    "related_group_id": "GRP-SAT-WORKER-03",
+    "description": "City bus feeder services for 2nd and 3rd manufacturing shifts at Satpur MIDC were abruptly cancelled. Over 800 factory workers are stranded or walking 6 km along unlit roads. Overflowing industrial estate public toilets creating severe health hazard. Workers held a peaceful, lawful assembly outside depot seeking prompt dialogue.",
+    "description_mr": "सातपूर एमआयडीसीच्या दुसऱ्या व तिसऱ्या पाळीसाठी शहर बस फेऱ्या बंद. ८०० हून अधिक कामगारांची गैरसोय. सार्वजनिक स्वच्छतागृहांची दुरावस्था. कामगारांचे शांततामय निवेदन.",
+    "evidence_placeholder": "redacted_depot_timetable_photo.jpg (No worker faces captured)",
+    "assigned_institution": "Nashik Mahanagar Parivahan Mahamandal Ltd (NMPML) & MIDC Nashik Office",
+    "responsible_role": "Traffic General Manager (NMPML) & Regional Officer (MIDC)",
+    "statutory_mandate": "Road Transport Corporations Act, 1950; Maharashtra Industrial Development Act, 1961",
+    "due_date": "2026-10-15T18:00:00+05:30",
+    "sla_days_standard": 3,
+    "ai_assistance": {
+      "suggested_category": "worker_service_disruption",
+      "category_confidence": "95%",
+      "suggested_routing": "NMPML (City Bus) & MIDC Administration",
+      "duplicate_flag": "42 aggregated worker grievances logged across morning shifts",
+      "uncertainty_label": "PEACEFUL ASSEMBLY PROTECTED. System strictly acts as dialogue facilitator, not crowd monitoring.",
+      "redaction_applied": "No union leaders, attendees, or employee badge IDs tracked or recorded"
+    },
+    "history": [
+      {
+        "timestamp": "2026-10-12T07:30:00+05:30",
+        "actor": "Worker Welfare Committee Representative (Pseudonym #W092)",
+        "action": "Report Received",
+        "notes": "Coarse locality Satpur MIDC. Explicit consent provided for aggregated reporting."
+      },
+      {
+        "timestamp": "2026-10-12T09:00:00+05:30",
+        "actor": "Authority Reviewer (District Labour Liaison)",
+        "action": "Referred to verified service owner",
+        "notes": "Routed directly to NMPML Operations Depot and MIDC sanitation engineer."
+      },
+      {
+        "timestamp": "2026-10-13T11:00:00+05:30",
+        "actor": "NMPML Operations Manager",
+        "action": "Response received",
+        "notes": "Official institutional response: 4 feeder electric bus services restored for 2:30 PM and 10:30 PM shift changeovers starting today. MIDC contractor deployed jetting machine to service industrial estate public toilets."
+      }
+    ]
+  },
+  {
+    "id": "CIVIC-2026-0896",
+    "fictional_disclaimer": "DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT",
+    "domain": "environment",
+    "report_mode": "individual_issue",
+    "title": "Industrial Effluent Foaming Observed Near Darna-Godavari Confluence",
+    "title_mr": "दारणा-गोदावरी संगमाजवळ रासायनिक फेसाळ पाणी आढळले",
+    "coarse_locality": "Darna River Basin, Near Sinnar-Nashik Border",
+    "locality_type": "semi_urban",
+    "taluka": "Sinnar",
+    "submitted_at": "2026-10-13T06:45:00+05:30",
+    "status": "Awaiting human review",
+    "status_mr": "मानवी पुनरावलोकनाची प्रतीक्षा",
+    "aggregate_count": 3,
+    "related_group_id": "GRP-SIN-ENV-01",
+    "description": "White chemical foam and pungent pungent sulfur odor discharging into river channel. Downstream agricultural pumps drawing discolored water.",
+    "description_mr": "नदीच्या पात्रात पांढरा रासायनिक फेस आणि तीव्र दुर्गंधी. खालील भागातील शेती पंपांना फेसाळ पाणी येत आहे.",
+    "evidence_placeholder": "redacted_river_surface_photo.png (Cleaned metadata)",
+    "assigned_institution": "Maharashtra Pollution Control Board (MPCB) - Regional Office Nashik",
+    "responsible_role": "Field Officer (Scientific Monitoring - MPCB Nashik)",
+    "statutory_mandate": "Water (Prevention & Control of Pollution) Act, 1974 (Sec. 24)",
+    "due_date": "2026-10-16T17:00:00+05:30",
+    "sla_days_standard": 3,
+    "ai_assistance": {
+      "suggested_category": "environment",
+      "category_confidence": "97%",
+      "suggested_routing": "MPCB Nashik Regional Office",
+      "duplicate_flag": "3 reports within 1 km river stretch",
+      "uncertainty_label": "Environmental sample needs laboratory chemical test; AI visual output is not legal proof.",
+      "redaction_applied": "Reporter details withheld; river coordinates generalized to sub-basin"
+    },
+    "history": [
+      {
+        "timestamp": "2026-10-13T06:45:00+05:30",
+        "actor": "Farmer Cooperative Member (Pseudonym #F512)",
+        "action": "Report Received",
+        "notes": "Logged with coarse locality tag: Sinnar Darna basin."
+      }
+    ]
+  },
+  {
+    "id": "CIVIC-2026-0897",
+    "fictional_disclaimer": "DEMO SAMPLE - 100% FICTIONAL RECORD FOR CIVICLOOP PILOT",
+    "domain": "public_administration",
+    "report_mode": "individual_issue",
+    "title": "Subdivision Office Citizen Charter Service Delay for Land Title Mutation (Ferfar)",
+    "title_mr": "उपविभागीय कार्यालयात जमिनीच्या फेरफार नोंदीसाठी विहित मुदतीपेक्षा विलंब",
+    "coarse_locality": "Malegaon Sub-Divisional Office, Malegaon",
+    "locality_type": "urban",
+    "taluka": "Malegaon",
+    "submitted_at": "2026-10-05T11:00:00+05:30",
+    "status": "Resolved",
+    "status_mr": "निराकरण झाले (समाधानकारक)",
+    "aggregate_count": 1,
+    "related_group_id": "GRP-MAL-ADM-01",
+    "description": "Statutory mutation entry pending beyond the 30-day citizen charter limit without formal objection notice or written ground of rejection.",
+    "description_mr": "कोणतीही लेखी हरकत नसताना ३० दिवसांपेक्षा जास्त काळ फेरफार नोंद प्रलंबित.",
+    "evidence_placeholder": "redacted_acknowledgement_receipt.pdf (Applicant name and survey number redacted)",
+    "assigned_institution": "Collectorate & Sub-Divisional Office Nashik / Malegaon",
+    "responsible_role": "Sub-Divisional Officer (SDO Revenue)",
+    "statutory_mandate": "Maharashtra Land Revenue Code, 1966 (Sec. 149); Maharashtra Right to Public Services Act, 2015",
+    "due_date": "2026-10-12T17:00:00+05:30",
+    "sla_days_standard": 7,
+    "ai_assistance": {
+      "suggested_category": "public_administration",
+      "category_confidence": "92%",
+      "suggested_routing": "Sub-Divisional Officer (Revenue Malegaon)",
+      "duplicate_flag": "Single individual procedural delay",
+      "uncertainty_label": "Procedural compliance review required by designated appellate officer.",
+      "redaction_applied": "Applicant name, land parcel number, and Aadhaar numbers redacted"
+    },
+    "history": [
+      {
+        "timestamp": "2026-10-05T11:00:00+05:30",
+        "actor": "Citizen (Pseudonym #M109)",
+        "action": "Report Received",
+        "notes": "Filed under RTS grievance category."
+      },
+      {
+        "timestamp": "2026-10-06T09:30:00+05:30",
+        "actor": "District Revenue Triage Officer",
+        "action": "Referred to verified service owner",
+        "notes": "Transferred to Tehsildar Malegaon for urgent enquiry."
+      },
+      {
+        "timestamp": "2026-10-12T16:00:00+05:30",
+        "actor": "Tehsildar Malegaon Office",
+        "action": "Resolved",
+        "notes": "Mutation entry #8441 certified in E-Ferfar portal after verifying notice period. Copy made available for citizen download on Aaple Sarkar portal."
+      }
+    ]
+  }
+]

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CivicLoop: Public service issue reporting, shared civic concern listening, and institutional resolution prototype. Pilot: Nashik District, Maharashtra.">
+  <title>CivicLoop | नाशिक जिल्हा नागरी संवाद व समस्या निवारण व्यासपीठ</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-civic">
+  <!-- Skip link for keyboard navigation -->
+  <a href="#main-content" class="skip-link" data-i18n="skip_to_content">Skip to main content</a>
+
+  <!-- Prototype Advisory Banner -->
+  <aside class="prototype-banner" role="complementary" aria-label="Prototype Notice">
+    <div class="banner-inner">
+      <span class="banner-badge" data-i18n="prototype_badge">HSC 2027 PROTOTYPE</span>
+      <span class="banner-text" data-i18n="prototype_banner_text">
+        Non-governmental civic listening prototype by Team Nav Bharat for Hack for Social Cause 2027. All data is fictional sample data for Nashik district. Exact GPS & personal IDs are never collected.
+      </span>
+      <span class="pilot-tag" data-i18n="pilot_tag">Pilot: Nashik District, MH</span>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="app-header" role="banner">
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="3" stroke-dasharray="8 4" class="logo-ring"/>
+            <circle cx="20" cy="20" r="8" fill="currentColor" class="logo-core"/>
+            <path d="M20 4V12M20 28V36M4 20H12M28 20H36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <div class="brand-name-row">
+            <h1 class="brand-name">CivicLoop</h1>
+            <span class="brand-subname" lang="mr">नागरिक चक्र</span>
+          </div>
+          <p class="brand-tagline" data-i18n="brand_tagline">Accountable Public Service Listening & Institutional Resolution</p>
+        </div>
+      </div>
+
+      <!-- Center Navigation Tabs -->
+      <nav class="nav-tabs" role="navigation" aria-label="Main Navigation">
+        <button class="nav-tab-btn active" data-tab="tab-dashboard" id="btn-tab-dashboard" role="tab" aria-selected="true" aria-controls="tab-dashboard">
+          <span class="tab-icon" aria-hidden="true">📊</span>
+          <span class="tab-label" data-i18n="nav_dashboard">Public Dashboard</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="tab-report" id="btn-tab-report" role="tab" aria-selected="false" aria-controls="tab-report">
+          <span class="tab-icon" aria-hidden="true">✍️</span>
+          <span class="tab-label" data-i18n="nav_report">Submit Issue</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="tab-authority" id="btn-tab-authority" role="tab" aria-selected="false" aria-controls="tab-authority">
+          <span class="tab-icon" aria-hidden="true">🏛️</span>
+          <span class="tab-label" data-i18n="nav_authority">Authority Desk</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="tab-governance" id="btn-tab-governance" role="tab" aria-selected="false" aria-controls="tab-governance">
+          <span class="tab-icon" aria-hidden="true">📜</span>
+          <span class="tab-label" data-i18n="nav_governance">Polity & Finance</span>
+        </button>
+        <button class="nav-tab-btn" data-tab="tab-charter" id="btn-tab-charter" role="tab" aria-selected="false" aria-controls="tab-charter">
+          <span class="tab-icon" aria-hidden="true">🛡️</span>
+          <span class="tab-label" data-i18n="nav_charter">Safeguards & Charter</span>
+        </button>
+      </nav>
+
+      <!-- Language & Controls -->
+      <div class="header-actions">
+        <div class="lang-switch-box" role="group" aria-label="Language selector">
+          <button class="lang-btn active" id="lang-en" aria-pressed="true">English</button>
+          <button class="lang-btn" id="lang-mr" aria-pressed="false">मराठी</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="app-main" role="main">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: PUBLIC DASHBOARD                     -->
+    <!-- ========================================== -->
+    <section id="tab-dashboard" class="tab-pane active" role="tabpanel" aria-labelledby="btn-tab-dashboard">
+      <div class="pane-header">
+        <div class="pane-title-group">
+          <h2 class="pane-title" data-i18n="dash_title">Nashik District Public Service Overview</h2>
+          <p class="pane-subtitle" data-i18n="dash_subtitle">
+            Transparent tracking of citizen reports, aggregate shared concerns, and official institutional commitments across rural and urban Nashik.
+          </p>
+        </div>
+        <div class="pane-actions">
+          <button class="btn btn-primary" onclick="window.switchTab('tab-report')">
+            <span aria-hidden="true">+</span> <span data-i18n="btn_raise_concern">Raise a Concern</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Counters -->
+      <div class="metrics-grid" id="metrics-counters">
+        <div class="metric-card">
+          <div class="metric-icon" aria-hidden="true">📋</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-total-issues">--</div>
+            <div class="metric-label" data-i18n="stat_active_issues">Active Cases Logged</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" aria-hidden="true">👥</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-shared-citizens">--</div>
+            <div class="metric-label" data-i18n="stat_shared_voices">Co-Signed In Concerns</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" aria-hidden="true">⏱️</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-avg-sla">4.2 Days</div>
+            <div class="metric-label" data-i18n="stat_avg_sla">Citizen Charter Target</div>
+          </div>
+        </div>
+        <div class="metric-card highlight-metric">
+          <div class="metric-icon" aria-hidden="true">✅</div>
+          <div class="metric-data">
+            <div class="metric-value" id="stat-resolution-rate">--</div>
+            <div class="metric-label" data-i18n="stat_responded">Responded or Resolved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shared Concerns Spotlight Section -->
+      <div class="spotlight-section">
+        <div class="section-title-bar">
+          <div class="title-with-pill">
+            <h3 class="section-heading" data-i18n="spotlight_heading">Priority Shared & Collective Concerns</h3>
+            <span class="info-pill" data-i18n="spotlight_pill">Aggregated Without Personal Profiling</span>
+          </div>
+          <span class="section-note" data-i18n="spotlight_note">Co-reported systemic concerns requiring multi-agency or departmental coordination</span>
+        </div>
+
+        <div class="shared-cards-grid" id="shared-concerns-container">
+          <!-- Dynamically populated with education, healthcare, water, and worker shared concerns -->
+        </div>
+      </div>
+
+      <!-- Filters & Search Toolbar -->
+      <div class="filter-toolbar" role="search" aria-label="Filter issues">
+        <div class="search-input-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="text" id="search-query" class="form-input search-input" placeholder="Search by locality, issue, or reference ID..." data-i18n-ph="search_placeholder" aria-label="Search reports">
+        </div>
+
+        <div class="filter-select-group">
+          <div class="filter-item">
+            <label for="filter-domain" class="filter-label" data-i18n="filter_domain_label">Domain:</label>
+            <select id="filter-domain" class="form-select">
+              <option value="all" data-i18n="filter_all_domains">All Domains (10)</option>
+              <option value="roads_infrastructure" data-i18n="domain_roads">Roads & Infrastructure</option>
+              <option value="water_sanitation" data-i18n="domain_water">Water & Sanitation</option>
+              <option value="education_examinations" data-i18n="domain_education">Education & Exams</option>
+              <option value="healthcare" data-i18n="domain_healthcare">Healthcare Access</option>
+              <option value="worker_service_disruption" data-i18n="domain_worker">Worker / Service Disruption</option>
+              <option value="environment" data-i18n="domain_environment">Environment & Pollution</option>
+              <option value="public_administration" data-i18n="domain_administration">Public Administration</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="filter-status" class="filter-label" data-i18n="filter_status_label">Status:</label>
+            <select id="filter-status" class="form-select">
+              <option value="all" data-i18n="filter_all_statuses">All Statuses</option>
+              <option value="Received">Received</option>
+              <option value="Awaiting human review">Awaiting Human Review</option>
+              <option value="Corroboration review">Corroboration Review</option>
+              <option value="Referred to verified service owner">Referred to Service Owner</option>
+              <option value="Response received">Response Received</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed with reason">Closed with Reason</option>
+            </select>
+          </div>
+
+          <div class="filter-item">
+            <label for="filter-taluka" class="filter-label" data-i18n="filter_taluka_label">Taluka:</label>
+            <select id="filter-taluka" class="form-select">
+              <option value="all" data-i18n="filter_all_talukas">All 15 Talukas</option>
+              <option value="Nashik">Nashik (Urban/Rural)</option>
+              <option value="Niphad">Niphad</option>
+              <option value="Dindori">Dindori</option>
+              <option value="Sinnar">Sinnar</option>
+              <option value="Malegaon">Malegaon</option>
+              <option value="Igatpuri">Igatpuri</option>
+              <option value="Yeola">Yeola</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Public Issues Feed -->
+      <div class="issues-feed-header">
+        <span class="feed-count" id="issues-result-count">Showing 0 issues</span>
+        <span class="privacy-tag" data-i18n="privacy_guarantee_tag">🛡️ Coarse Locality Redacted • Zero PII Exposed</span>
+      </div>
+
+      <div class="issues-cards-container" id="public-issues-list" role="feed" aria-busy="false">
+        <!-- Rendered by dashboard.js -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: CITIZEN REPORTING FLOW               -->
+    <!-- ========================================== -->
+    <section id="tab-report" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-report">
+      <div class="report-wizard-card">
+        <div class="pane-header">
+          <div class="pane-title-group">
+            <h2 class="pane-title" data-i18n="report_form_title">Report a Public Issue or Shared Concern</h2>
+            <p class="pane-subtitle" data-i18n="report_form_subtitle">
+              Your voice is routed directly to statutory service mandates. No Aadhaar, phone number, or exact address is required.
+            </p>
+          </div>
+          <div class="privacy-seal">
+            <span class="seal-icon" aria-hidden="true">🔒</span>
+            <span class="seal-text" data-i18n="privacy_seal">Privacy-Safe Demilitarized Ingestion</span>
+          </div>
+        </div>
+
+        <form id="citizen-report-form" class="citizen-form" novalidate>
+
+          <!-- Step 1: Report Mode -->
+          <div class="form-section">
+            <label class="section-legend" data-i18n="step_mode_legend">1. Select Report Nature</label>
+            <div class="radio-card-grid" role="radiogroup" aria-label="Report Mode">
+              <label class="radio-card">
+                <input type="radio" name="report_mode" value="individual_issue" checked>
+                <div class="radio-card-body">
+                  <div class="card-icon" aria-hidden="true">📍</div>
+                  <div class="card-title" data-i18n="mode_single_title">Single Service Issue</div>
+                  <p class="card-desc" data-i18n="mode_single_desc">A localized defect such as a pothole, pipeline leak, or streetlight outage.</p>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="report_mode" value="shared_recurring_concern">
+                <div class="radio-card-body">
+                  <div class="card-icon" aria-hidden="true">👥</div>
+                  <div class="card-title" data-i18n="mode_shared_title">Shared / Recurring Concern</div>
+                  <p class="card-desc" data-i18n="mode_shared_desc">A broader grievance affecting multiple students, patients, or community residents.</p>
+                </div>
+              </label>
+
+              <label class="radio-card">
+                <input type="radio" name="report_mode" value="event_service_update">
+                <div class="radio-card-body">
+                  <div class="card-icon" aria-hidden="true">📢</div>
+                  <div class="card-title" data-i18n="mode_event_title">Public Event / Service Disruption</div>
+                  <p class="card-desc" data-i18n="mode_event_desc">Updates on lawful worker assembly, public transit outage, or examination center issues.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Domain Category -->
+          <div class="form-section">
+            <label for="form-domain" class="section-legend" data-i18n="step_domain_legend">2. Civic Domain</label>
+            <div class="domain-pill-selector" id="domain-pill-box">
+              <button type="button" class="domain-pill active" data-domain="roads_infrastructure">
+                <span class="pill-icon" aria-hidden="true">🛣️</span> Roads & Infrastructure
+              </button>
+              <button type="button" class="domain-pill" data-domain="water_sanitation">
+                <span class="pill-icon" aria-hidden="true">💧</span> Water & Sanitation
+              </button>
+              <button type="button" class="domain-pill" data-domain="education_examinations">
+                <span class="pill-icon" aria-hidden="true">🎓</span> Education & Exams
+              </button>
+              <button type="button" class="domain-pill" data-domain="healthcare">
+                <span class="pill-icon" aria-hidden="true">🏥</span> Healthcare Access
+              </button>
+              <button type="button" class="domain-pill" data-domain="worker_service_disruption">
+                <span class="pill-icon" aria-hidden="true">⚙️</span> Worker & Service Disruption
+              </button>
+              <button type="button" class="domain-pill" data-domain="environment">
+                <span class="pill-icon" aria-hidden="true">🌿</span> Environment & Rivers
+              </button>
+              <button type="button" class="domain-pill" data-domain="public_administration">
+                <span class="pill-icon" aria-hidden="true">🏛️</span> Public Administration / RTS
+              </button>
+              <button type="button" class="domain-pill" data-domain="corruption_integrity">
+                <span class="pill-icon" aria-hidden="true">⚖️</span> Integrity / Grievance
+              </button>
+              <button type="button" class="domain-pill" data-domain="collective_concern_event">
+                <span class="pill-icon" aria-hidden="true">🤝</span> Collective Assembly Dialogue
+              </button>
+            </div>
+            <input type="hidden" id="selected-domain" name="domain" value="roads_infrastructure">
+          </div>
+
+          <!-- Step 3: Coarse Locality -->
+          <div class="form-section">
+            <label class="section-legend" data-i18n="step_locality_legend">3. Coarse Locality (Privacy Protected)</label>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="form-taluka" class="form-label" data-i18n="label_taluka">Taluka / Sub-district *</label>
+                <select id="form-taluka" name="taluka" class="form-select" required>
+                  <option value="Nashik">Nashik Taluka (Urban & Rural)</option>
+                  <option value="Niphad">Niphad Taluka (पिंपळगाव / ओझर परिसर)</option>
+                  <option value="Dindori">Dindori Taluka (दिंडोरी)</option>
+                  <option value="Sinnar">Sinnar Taluka (सिन्नर)</option>
+                  <option value="Malegaon">Malegaon Taluka (मालेगाव)</option>
+                  <option value="Igatpuri">Igatpuri Taluka (इगतपुरी)</option>
+                  <option value="Trimbakeshwar">Trimbakeshwar (त्र्यंबकेश्वर)</option>
+                  <option value="Yeola">Yeola Taluka (येवला)</option>
+                  <option value="Chandwad">Chandwad (चांदवड)</option>
+                  <option value="Nandgaon">Nandgaon (नांदगाव)</option>
+                  <option value="Baglan (Satana)">Baglan / Satana (बागलाण)</option>
+                  <option value="Kalwan">Kalwan (कळवण)</option>
+                  <option value="Deola">Deola (देवळा)</option>
+                  <option value="Surgana">Surgana (सुरगाणा)</option>
+                  <option value="Peth">Peth (पेठ)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="form-coarse-area" class="form-label" data-i18n="label_coarse_area">Ward / Division or Village Area *</label>
+                <input type="text" id="form-coarse-area" name="coarse_locality" class="form-input" placeholder="e.g., Panchavati Ward 12 OR Pimpalgaon Gram Panchayat" required>
+                <span class="field-hint" data-i18n="hint_no_exact_address">⚠️ Do NOT enter apartment numbers, house names, or exact street coordinates.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Title & Description -->
+          <div class="form-section">
+            <label for="form-title" class="section-legend" data-i18n="step_details_legend">4. Issue Summary & Description</label>
+            <div class="form-group">
+              <label for="form-title" class="form-label" data-i18n="label_issue_title">Short Title *</label>
+              <input type="text" id="form-title" name="title" class="form-input" placeholder="e.g., Broken water supply valve causing 3-day outage in ward" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-desc" class="form-label" data-i18n="label_issue_desc">Detailed Observations *</label>
+              <textarea id="form-desc" name="description" rows="4" class="form-textarea" placeholder="Describe the physical condition, duration, community impact, or institution previously contacted..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_evidence">Simulated Evidence (Demo Placeholder)</label>
+              <div class="file-drop-mock" id="mock-file-upload">
+                <span class="upload-icon" aria-hidden="true">📷</span>
+                <span class="upload-text" data-i18n="upload_desc">Click to attach photo/document placeholder. (EXIF metadata & faces automatically sanitized)</span>
+                <span class="upload-badge" id="upload-status-badge">No private file stored on server</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive AI Safeguard & Heuristic Assistant Card -->
+          <div class="ai-assistant-card" id="ai-suggestion-box">
+            <div class="ai-header">
+              <div class="ai-badge-group">
+                <span class="ai-spark-icon" aria-hidden="true">✨</span>
+                <strong data-i18n="ai_assistant_title">Civic Heuristic Assistant</strong>
+                <span class="ai-advisory-pill" data-i18n="ai_advisory_pill">Advisory Heuristic Only</span>
+              </div>
+              <span class="ai-confidence" id="ai-confidence-label">Analyzed Heuristic: 92% Confidence</span>
+            </div>
+
+            <div class="ai-body">
+              <div class="ai-rec-row">
+                <span class="ai-rec-label" data-i18n="ai_predicted_routing">Candidate Service Mandate:</span>
+                <span class="ai-rec-val" id="ai-candidate-routing">Nashik Municipal Corporation / PWD</span>
+              </div>
+              <div class="ai-rec-row">
+                <span class="ai-rec-label" data-i18n="ai_statute_match">Statutory Basis:</span>
+                <span class="ai-rec-val" id="ai-statute-match">Maharashtra Right to Public Services Act, 2015</span>
+              </div>
+              <div class="ai-rec-row">
+                <span class="ai-rec-label" data-i18n="ai_duplicate_check">Similar Cluster Heuristic:</span>
+                <span class="ai-rec-val" id="ai-duplicate-match">Checking local ward clusters...</span>
+              </div>
+
+              <div class="ai-safeguard-box">
+                <strong data-i18n="ai_safeguard_title">⚖️ Rights & Truth Safeguard Notice:</strong>
+                <p data-i18n="ai_safeguard_desc">
+                  This algorithm provides non-binding classification suggestions. It is <strong>NEVER</strong> proof of truth or falsity, credibility, guilt, or political motive. All escalations mandate human authority verification.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Consent & Submission -->
+          <div class="consent-block">
+            <label class="checkbox-container">
+              <input type="checkbox" id="consent-check" required checked>
+              <span class="checkmark"></span>
+              <span class="checkbox-label" data-i18n="consent_statement">
+                I understand that this is a civic listening prototype. My submission will be grouped by coarse locality without publishing my personal identity. I confirm that no real personal sensitive documents (Aadhaar, PAN, phone numbers) are included.
+              </span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large" id="btn-submit-report">
+              <span class="btn-text" data-i18n="btn_submit_report">Register Fictional Report & View Reference</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Submission Success Modal / Banner -->
+        <div class="submission-success-banner hidden" id="submission-success-card" role="alert" aria-live="polite">
+          <div class="success-icon" aria-hidden="true">🎉</div>
+          <div class="success-content">
+            <h3 class="success-title" data-i18n="submit_success_title">Fictional Report Successfully Logged</h3>
+            <p class="success-ref">
+              <span data-i18n="label_issue_ref">Issue Tracking Reference:</span>
+              <strong id="new-issue-ref" class="ref-code">CIVIC-2026-XXXX</strong>
+            </p>
+            <p class="success-notes" data-i18n="submit_success_notes">
+              Your report has entered the <em>Received</em> state. It will now be reviewed by the designated human triage desk. No phone or email was stored.
+            </p>
+            <div class="success-buttons">
+              <button class="btn btn-secondary" onclick="window.viewSubmittedReport()" data-i18n="btn_view_on_dash">Track in Public Dashboard</button>
+              <button class="btn btn-outline" onclick="window.resetReportForm()" data-i18n="btn_submit_another">Submit Another Concern</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: AUTHORITY REVIEW DESK                -->
+    <!-- ========================================== -->
+    <section id="tab-authority" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-authority">
+      <div class="pane-header">
+        <div class="pane-title-group">
+          <div class="authority-badge-row">
+            <h2 class="pane-title" data-i18n="auth_title">Institutional Reviewer & Resolution Workspace</h2>
+            <span class="role-badge" data-i18n="auth_role_badge">Simulation: Nashik Grievance Triage Desk</span>
+          </div>
+          <p class="pane-subtitle" data-i18n="auth_subtitle">
+            Private work queue for verified service owners: validate statutory routing, set citizen-charter due dates, record official responses, and manage auditable escalations.
+          </p>
+        </div>
+        <div class="desk-stats">
+          <div class="desk-stat-item">
+            <span class="desk-num" id="auth-pending-count">0</span>
+            <span class="desk-lbl" data-i18n="auth_lbl_pending">Awaiting Triage</span>
+          </div>
+          <div class="desk-stat-item">
+            <span class="desk-num" id="auth-actioned-count">0</span>
+            <span class="desk-lbl" data-i18n="auth_lbl_actioned">In Pipeline</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authority Layout: Queue Table on Left, Action Drawer on Right -->
+      <div class="authority-grid">
+        <!-- Left: Queue of cases -->
+        <div class="auth-queue-pane">
+          <div class="queue-toolbar">
+            <span class="queue-heading" data-i18n="queue_cases_heading">Assigned Triage Queue</span>
+            <div class="queue-filter-buttons">
+              <button class="pill-btn active" data-auth-filter="all">All</button>
+              <button class="pill-btn" data-auth-filter="review">Needs Review</button>
+              <button class="pill-btn" data-auth-filter="escalated">Escalated</button>
+            </div>
+          </div>
+
+          <div class="queue-list" id="authority-queue-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Right: Detail & Human Decision Controls -->
+        <div class="auth-action-pane" id="auth-action-panel">
+          <div class="empty-selection-placeholder" id="auth-empty-state">
+            <div class="placeholder-icon" aria-hidden="true">👈</div>
+            <h4 data-i18n="auth_select_case_title">Select a Case from the Queue</h4>
+            <p data-i18n="auth_select_case_desc">Inspect candidate routing, verify jurisdiction, attach institutional response, or approve human escalation.</p>
+          </div>
+
+          <div class="case-detail-workspace hidden" id="auth-workspace-card">
+            <!-- Active Case Header -->
+            <div class="workspace-header">
+              <div class="ws-id-row">
+                <span class="ws-case-id" id="ws-case-id">CIVIC-2026-XXXX</span>
+                <span class="status-badge" id="ws-status-badge">Received</span>
+                <span class="aggregate-pill" id="ws-aggregate-pill">1 Report</span>
+              </div>
+              <h3 class="ws-title" id="ws-case-title">Case Title Placeholder</h3>
+              <p class="ws-locality" id="ws-case-locality">Locality</p>
+            </div>
+
+            <!-- Verification & Statutory Route -->
+            <div class="workspace-section">
+              <h4 class="ws-section-title" data-i18n="ws_routing_title">1. Mandate Routing & Jurisdiction Check</h4>
+              <div class="mandate-card">
+                <div class="mandate-row">
+                  <span class="mandate-k" data-i18n="ws_assigned_inst">Assigned Service Body:</span>
+                  <strong class="mandate-v" id="ws-assigned-institution">Nashik Municipal Corporation</strong>
+                </div>
+                <div class="mandate-row">
+                  <span class="mandate-k" data-i18n="ws_statutory_basis">Statutory Mandate:</span>
+                  <span class="mandate-v" id="ws-statutory-basis">Maharashtra Municipal Corporations Act, 1949</span>
+                </div>
+                <div class="mandate-row">
+                  <span class="mandate-k" data-i18n="ws_due_date">Citizen Charter Due Date:</span>
+                  <input type="date" id="ws-due-date-input" class="form-input form-input-sm">
+                </div>
+              </div>
+            </div>
+
+            <!-- Human Lifecycle Status Transitions -->
+            <div class="workspace-section">
+              <h4 class="ws-section-title" data-i18n="ws_lifecycle_title">2. Update Case Lifecycle State</h4>
+              <div class="status-action-buttons">
+                <button class="status-btn" data-new-status="Awaiting human review">Awaiting Review</button>
+                <button class="status-btn" data-new-status="Corroboration review">Corroboration Review</button>
+                <button class="status-btn" data-new-status="Referred to verified service owner">Refer to Service Owner</button>
+                <button class="status-btn" data-new-status="Response received">Response Received</button>
+                <button class="status-btn btn-success" data-new-status="Resolved">Mark Resolved</button>
+                <button class="status-btn btn-danger" data-new-status="Closed with reason">Close with Reason</button>
+              </div>
+            </div>
+
+            <!-- Official Institutional Response Recording -->
+            <div class="workspace-section">
+              <h4 class="ws-section-title" data-i18n="ws_response_title">3. Record Public Institutional Update</h4>
+              <textarea id="ws-response-text" rows="3" class="form-textarea" placeholder="Enter official work order number, repair schedule, or factual institutional statement..."></textarea>
+              <div class="ws-btn-row">
+                <button class="btn btn-secondary btn-sm" id="btn-save-response" onclick="window.saveInstitutionalResponse()">
+                  <span data-i18n="btn_publish_update">Publish Institutional Update to Public Record</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Human-Approved Auditable Escalation -->
+            <div class="workspace-section escalation-box">
+              <div class="esc-header">
+                <h4 class="esc-title" data-i18n="ws_escalation_title">4. Auditable Human Escalation</h4>
+                <span class="human-seal" data-i18n="ws_human_only">Human Approval Mandatory</span>
+              </div>
+              <p class="esc-desc" data-i18n="ws_escalation_desc">
+                Escalations cannot be automated by AI heuristics. You must record an official, auditable justification.
+              </p>
+
+              <div class="form-group">
+                <label for="ws-escalate-authority" class="form-label" data-i18n="label_escalate_target">Escalate To Authority *</label>
+                <select id="ws-escalate-authority" class="form-select form-select-sm">
+                  <option value="District Collectorate & Appellate Authority (Nashik)">District Collectorate & Appellate Authority (Nashik)</option>
+                  <option value="Municipal Commissioner, Nashik Municipal Corporation">Municipal Commissioner, NMC</option>
+                  <option value="Chief Executive Officer (CEO), Nashik Zilla Parishad">Chief Executive Officer (CEO), Zilla Parishad</option>
+                  <option value="Superintending Engineer, PWD Nashik Circle">Superintending Engineer, PWD Nashik</option>
+                  <option value="Divisional Board Chairman, MSBSHSE Nashik">Divisional Board Chairman, MSBSHSE</option>
+                  <option value="Office of Additional Labour Commissioner Nashik">Additional Labour Commissioner Nashik</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="ws-escalate-reason" class="form-label" data-i18n="label_escalate_reason">Auditable Ground for Escalation *</label>
+                <textarea id="ws-escalate-reason" rows="2" class="form-textarea" placeholder="State reason: e.g. Statutory SLA breach, systemic public health hazard, or multi-departmental impasse..."></textarea>
+              </div>
+
+              <button class="btn btn-warning btn-sm" id="btn-trigger-escalation" onclick="window.triggerHumanEscalation()">
+                <span data-i18n="btn_approve_escalation">Approve & Log Formal Escalation</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Audit Trail -->
+      <div class="audit-trail-card">
+        <div class="audit-header">
+          <h3 class="audit-title" data-i18n="audit_log_title">Auditable System Review & Safeguard Log</h3>
+          <span class="audit-badge" data-i18n="audit_log_badge">Tamper-Evident History</span>
+        </div>
+        <p class="audit-desc" data-i18n="audit_log_desc">
+          Every triage classification, evidence corroboration, and escalation is attributed to a verified reviewer.
+        </p>
+        <div class="audit-table-wrapper">
+          <table class="audit-table" aria-label="System Audit Trail">
+            <thead>
+              <tr>
+                <th scope="col">Log ID</th>
+                <th scope="col">Timestamp</th>
+                <th scope="col">Reviewer / Actor</th>
+                <th scope="col">Action Type</th>
+                <th scope="col">Case Target</th>
+                <th scope="col">Auditable Justification / Reason</th>
+              </tr>
+            </thead>
+            <tbody id="audit-log-rows">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: POLITY & PUBLIC FINANCE EXPLORER     -->
+    <!-- ========================================== -->
+    <section id="tab-governance" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-governance">
+      <div class="pane-header">
+        <div class="pane-title-group">
+          <h2 class="pane-title" data-i18n="gov_title">Indian Polity, Governance & Public Finance Reference</h2>
+          <p class="pane-subtitle" data-i18n="gov_subtitle">
+            Source-attributed constitutional architecture of India, 3-tier federalism, Maharashtra & Nashik administrative routing, and public finance flows.
+          </p>
+        </div>
+        <span class="source-seal" data-i18n="gov_source_seal">Tier-1 Official Government Sources Only</span>
+      </div>
+
+      <!-- Constitutional Federalism Explainer -->
+      <div class="polity-overview-card">
+        <div class="overview-header">
+          <h3 class="overview-heading" data-i18n="polity_overview_heading">Constitutional Architecture: Federal Parliamentary Republic</h3>
+          <span class="ref-cite">Source: India Code (Constitution of India, Arts. 1, 245-255, 7th Sch.)</span>
+        </div>
+        <p class="overview-text" data-i18n="polity_overview_text">
+          India is a parliamentary, federal constitutional republic. The Union, States, and Local Self-Governments operate under statutory mandates defined by the Constitution and state legislative enactments. Crucially, <strong>service delivery ownership is governed by departmental jurisdiction and local laws</strong> — not by the individual whim of an elected MP or MLA. Civic complaints must be routed to the statutory asset owner (e.g. Municipal Corporation for city roads, PWD for State Highways, Zilla Parishad for rural health).
+        </p>
+
+        <!-- 3-Tier Visual Diagram -->
+        <div class="federalism-tree" aria-label="Constitutional Tier Diagram">
+          <div class="tree-tier tier-union">
+            <div class="tier-label">Tier 1: Union of India (संघ)</div>
+            <div class="tier-details">
+              <strong>Parliament (Lok Sabha / Rajya Sabha) & Union Ministries</strong>
+              <p>National defense, highways (NHAI), railway corridors, Union budget, central tax devolution.</p>
+            </div>
+          </div>
+          <div class="tree-divider" aria-hidden="true">⬇️ 7th Schedule & Article 270 Devolution ⬇️</div>
+          <div class="tree-tier tier-state">
+            <div class="tier-label">Tier 2: State Government (महाराष्ट्र शासन)</div>
+            <div class="tier-details">
+              <strong>State Legislature (Vidhan Sabha / Parishad) & Executive Departments</strong>
+              <p>Public health, police/public order, state highways (PWD), state education boards, local government laws.</p>
+            </div>
+          </div>
+          <div class="tree-divider" aria-hidden="true">⬇️ 73rd & 74th Amendments (11th & 12th Schedules) ⬇️</div>
+          <div class="tree-tier tier-local">
+            <div class="tier-label">Tier 3: Local Self-Governments (स्थानिक स्वराज्य संस्था)</div>
+            <div class="tier-grid">
+              <div class="local-box urban-box">
+                <strong>Urban Local Bodies (ULBs)</strong>
+                <p>Nashik Municipal Corporation (122 Wards), Malegaon Municipal Corporation, 6 Municipal Councils, 8 Nagar Panchayats.</p>
+                <small>Water supply, city roads, drainage, solid waste, fire services, streetlights.</small>
+              </div>
+              <div class="local-box rural-box">
+                <strong>Rural Local Bodies (PRIs)</strong>
+                <p>Nashik Zilla Parishad (LGD 276) ➔ 15 Panchayat Samitis ➔ 1,380+ Gram Panchayats.</p>
+                <small>Rural water schemes, primary schools, village sanitation, rural health centres (PHCs).</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Public Finance & Fiscal Federalism Explorer -->
+      <div class="finance-section">
+        <div class="section-title-bar">
+          <div class="title-with-pill">
+            <h3 class="section-heading" data-i18n="finance_heading">Public Finance & Intergovernmental Fund Flows</h3>
+            <span class="info-pill" data-i18n="finance_pill">Union Budget & Finance Commission</span>
+          </div>
+          <span class="section-note" data-i18n="finance_note">How taxpayer money travels from the central divisible pool to Nashik local bodies</span>
+        </div>
+
+        <div class="finance-flow-grid">
+          <div class="flow-card">
+            <div class="flow-step-num">1</div>
+            <h4 class="flow-step-title" data-i18n="flow_1_title">Union Tax Pool Devolution</h4>
+            <p class="flow-step-desc" data-i18n="flow_1_desc">
+              Union Government collects Gross Tax Revenue. Per the <strong>15th Finance Commission</strong> formula, <strong>41%</strong> of the net divisible tax pool is devolved horizontally to States.
+            </p>
+            <div class="flow-data-pill">Maharashtra Share FY 24-25: ₹77,800 Cr (RE)</div>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-step-num">2</div>
+            <h4 class="flow-step-title" data-i18n="flow_2_title">Intergovernmental Grants</h4>
+            <p class="flow-step-desc" data-i18n="flow_2_desc">
+              Direct statutory grants are transferred under Article 275 for Rural Local Bodies (RLBs) and Urban Local Bodies (ULBs), divided into <em>Tied</em> (drinking water, sanitation) and <em>Untied</em> funds.
+            </p>
+            <div class="flow-data-pill">Nashik ZP FC Grant: ₹164.5 Cr | NMC Grant: ₹82.3 Cr</div>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-step-num">3</div>
+            <h4 class="flow-step-title" data-i18n="flow_3_title">District Planning Committee (DPDC)</h4>
+            <p class="flow-step-desc" data-i18n="flow_3_desc">
+              Under <strong>Article 243ZD</strong>, the District Planning Committee consolidates municipal and rural plans into the District Annual Plan for road networks, tribal development, and public healthcare.
+            </p>
+            <div class="flow-data-pill">Nashik DPDC Annual Outlay: ₹1,050 Cr</div>
+          </div>
+        </div>
+
+        <!-- Sourced Economic Records Table -->
+        <div class="records-table-card">
+          <h4 class="records-table-title" data-i18n="economic_records_title">Sourced Fiscal Federalism Seed Data (Nashik & Maharashtra)</h4>
+          <div class="audit-table-wrapper">
+            <table class="audit-table" aria-label="Sourced Economic Records">
+              <thead>
+                <tr>
+                  <th scope="col">Record ID</th>
+                  <th scope="col">Entity / Public Body</th>
+                  <th scope="col">Fiscal Category</th>
+                  <th scope="col">Fiscal Year</th>
+                  <th scope="col">Amount (INR)</th>
+                  <th scope="col">Official Source & Caveat</th>
+                </tr>
+              </thead>
+              <tbody id="economic-records-rows">
+                <!-- Dynamically populated from economic_records.json -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nashik Service Routing Matrix Explorer -->
+      <div class="routing-explorer-section">
+        <div class="section-title-bar">
+          <h3 class="section-heading" data-i18n="matrix_heading">Nashik Service Routing Matrix: Rural vs. Urban Paths</h3>
+          <span class="section-note" data-i18n="matrix_note">Statutory rules mapping problem domain to responsible institution</span>
+        </div>
+
+        <div class="audit-table-wrapper">
+          <table class="audit-table" aria-label="Nashik Service Routing Matrix">
+            <thead>
+              <tr>
+                <th scope="col">Domain</th>
+                <th scope="col">Territory</th>
+                <th scope="col">Responsible Institution</th>
+                <th scope="col">Routing Condition</th>
+                <th scope="col">Statutory Reference</th>
+                <th scope="col">Target SLA</th>
+                <th scope="col">Escalation Channel</th>
+              </tr>
+            </thead>
+            <tbody id="routing-matrix-rows">
+              <!-- Dynamically populated from nashik_routes.json -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Source Provenance & Registry -->
+      <div class="source-registry-card">
+        <div class="registry-header">
+          <h3 class="registry-heading" data-i18n="registry_title">Official Source Registry & Data Provenance</h3>
+          <span class="trust-badge" data-i18n="registry_badge">Verifiable Citations</span>
+        </div>
+        <p class="registry-desc" data-i18n="registry_desc">
+          CivicLoop does not invent officeholders, deadlines, or legal powers. Below is the complete provenance registry of official government repositories consulted.
+        </p>
+
+        <div class="audit-table-wrapper">
+          <table class="audit-table" aria-label="Source Registry">
+            <thead>
+              <tr>
+                <th scope="col">Source ID</th>
+                <th scope="col">Official Organization</th>
+                <th scope="col">Dataset / Document Name</th>
+                <th scope="col">Official Portal URL</th>
+                <th scope="col">Trust Tier & License</th>
+                <th scope="col">Verification Date</th>
+              </tr>
+            </thead>
+            <tbody id="source-registry-rows">
+              <!-- Dynamically populated from india_governance.json source_registry -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: SAFEGUARDS, RIGHTS & CHARTER         -->
+    <!-- ========================================== -->
+    <section id="tab-charter" class="tab-pane" role="tabpanel" aria-labelledby="btn-tab-charter">
+      <div class="pane-header">
+        <div class="pane-title-group">
+          <h2 class="pane-title" data-i18n="charter_title">AI & Rights Safeguards Charter</h2>
+          <p class="pane-subtitle" data-i18n="charter_subtitle">
+            Ethical principles governing CivicLoop: protecting peaceful assembly, preventing surveillance, and ensuring algorithmic accountability.
+          </p>
+        </div>
+        <span class="charter-badge" data-i18n="charter_badge">HSC 2027 Core Mandate</span>
+      </div>
+
+      <div class="charter-grid">
+        <!-- Principle 1 -->
+        <div class="charter-card">
+          <div class="charter-icon" aria-hidden="true">🕊️</div>
+          <h3 class="charter-card-title" data-i18n="principle_1_title">1. Peaceful Assembly Protection</h3>
+          <p class="charter-card-text" data-i18n="principle_1_desc">
+            Reports concerning strikes, protests, student action, or paper leak grievances are treated as <strong>issue-level civic listening</strong>. CivicLoop strictly prohibits tracking demonstrators, mapping protest movements, facial indexing, or treating peaceful assembly as a public threat.
+          </p>
+        </div>
+
+        <!-- Principle 2 -->
+        <div class="charter-card">
+          <div class="charter-icon" aria-hidden="true">⚖️</div>
+          <h3 class="charter-card-title" data-i18n="principle_2_title">2. No AI Truth or Guilt Judgments</h3>
+          <p class="charter-card-text" data-i18n="principle_2_desc">
+            AI heuristics only suggest classification and route matching. <strong>AI output is never evidence of truth or falsity, credibility, guilt, or officer culpability.</strong> No automated law-enforcement dispatch or automated public allegations are permitted.
+          </p>
+        </div>
+
+        <!-- Principle 3 -->
+        <div class="charter-card">
+          <div class="charter-icon" aria-hidden="true">🛡️</div>
+          <h3 class="charter-card-title" data-i18n="principle_3_title">3. Identity & Case Record Decoupling</h3>
+          <p class="charter-card-text" data-i18n="principle_3_desc">
+            Reporter identities are never coupled to public issue records. We strictly avoid Aadhaar, student IDs, phone numbers, home addresses, faces, or precise GPS coordinates. Sensitive domains default to coarse locality (taluka/ward).
+          </p>
+        </div>
+
+        <!-- Principle 4 -->
+        <div class="charter-card">
+          <div class="charter-icon" aria-hidden="true">👤</div>
+          <h3 class="charter-card-title" data-i18n="principle_4_title">4. Mandatory Human Review for Escalation</h3>
+          <p class="charter-card-text" data-i18n="principle_4_desc">
+            Every escalation to senior district leadership requires human authorization with an auditable, written justification. Automated algorithmic escalation is strictly prohibited to prevent grievance inflation or weaponization.
+          </p>
+        </div>
+      </div>
+
+      <!-- Legal & Competition Disclaimers -->
+      <div class="legal-disclaimer-box">
+        <h4 data-i18n="disclaimer_heading">Formal Competition Disclaimers & Limitations</h4>
+        <ul>
+          <li data-i18n="disclaimer_1"><strong>Non-Governmental Prototype:</strong> CivicLoop is an independent academic prototype created by Team Nav Bharat for HSC 2027. It has no live government server integration.</li>
+          <li data-i18n="disclaimer_2"><strong>Fictional Demonstration Data:</strong> All sample issues, work orders, and response notes are simulated for evaluation purposes.</li>
+          <li data-i18n="disclaimer_3"><strong>Data Minimization & Deletion:</strong> Local demo state is stored ephemerally in browser memory and local storage. No persistent citizen surveillance records are created.</li>
+          <li data-i18n="disclaimer_4"><strong>Statutory Caveat:</strong> Governance references reflect public acts and gazetted sources as of October 2026 and do not constitute formal legal counsel.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Issue Detail Modal -->
+  <div class="modal-backdrop hidden" id="issue-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-issue-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-row">
+          <span class="ref-badge" id="modal-ref-id">CIVIC-2026-XXXX</span>
+          <span class="status-badge" id="modal-status-badge">Received</span>
+        </div>
+        <button class="modal-close-btn" onclick="window.closeIssueModal()" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-body" id="modal-body-content">
+        <!-- Rendered dynamically by dashboard.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="footer-brand">CivicLoop • नागरिक चक्र</div>
+        <p class="footer-text">Solo Entry: Team Nav Bharat | Hack for Social Cause 2027</p>
+        <p class="footer-text">Theme: Governance and Civic Technology | Pilot: Nashik District, Maharashtra</p>
+      </div>
+      <div class="footer-col text-right">
+        <p class="footer-text">License: MIT License (Open Governance Prototype)</p>
+        <p class="footer-text">Built with accessible Vanilla HTML5, CSS3, & Modern JavaScript.</p>
+        <p class="footer-text">Zero external API dependencies • Fully self-contained local runner.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Modules -->
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/reporting.js"></script>
+  <script src="js/authority.js"></script>
+  <script src="js/governance.js"></script>
+</body>
+</html>

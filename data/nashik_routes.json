@@ -1,0 +1,175 @@
+{
+  "pilot_district": "Nashik",
+  "state": "Maharashtra",
+  "lgd_district_code": "485",
+  "meta": {
+    "version": "1.0.0",
+    "updated": "2026-10-14",
+    "source_notes": "Compiled from Nashik District Administration, NMC, and Nashik ZP official portals. All routing rules are verified by statutory jurisdiction."
+  },
+  "subdivisions_and_talukas": [
+    {"name": "Nashik", "lgd_code": "4168", "type": "Subdivision & Taluka", "dominant_character": "Urban & Peri-Urban"},
+    {"name": "Dindori", "lgd_code": "4164", "type": "Subdivision & Taluka", "dominant_character": "Rural & Tribal Agro"},
+    {"name": "Niphad", "lgd_code": "4169", "type": "Subdivision & Taluka", "dominant_character": "Rural Intensive Agriculture"},
+    {"name": "Sinnar", "lgd_code": "4170", "type": "Subdivision & Taluka", "dominant_character": "Semi-Urban & MIDC Industrial"},
+    {"name": "Malegaon", "lgd_code": "4161", "type": "Subdivision & Taluka", "dominant_character": "Urban Corporation & Rural"},
+    {"name": "Igatpuri", "lgd_code": "4167", "type": "Taluka", "dominant_character": "Rural & Mountainous Ghats"},
+    {"name": "Trimbakeshwar", "lgd_code": "4171", "type": "Taluka", "dominant_character": "Pilgrimage Urban & Tribal Rural"},
+    {"name": "Yeola", "lgd_code": "4172", "type": "Taluka", "dominant_character": "Handloom Textile & Rural"},
+    {"name": "Chandwad", "lgd_code": "4163", "type": "Taluka", "dominant_character": "Agricultural Rural"},
+    {"name": "Nandgaon", "lgd_code": "4162", "type": "Taluka", "dominant_character": "Railway Junction & Rural"},
+    {"name": "Baglan (Satana)", "lgd_code": "4160", "type": "Taluka", "dominant_character": "Agricultural Rural"},
+    {"name": "Kalwan", "lgd_code": "4165", "type": "Taluka", "dominant_character": "Tribal Rural"},
+    {"name": "Deola", "lgd_code": "4166", "type": "Taluka", "dominant_character": "Agricultural Rural"},
+    {"name": "Surgana", "lgd_code": "4159", "type": "Taluka", "dominant_character": "Tribal Forest Rural"},
+    {"name": "Peth", "lgd_code": "4158", "type": "Taluka", "dominant_character": "Tribal Forest Rural"}
+  ],
+  "urban_administrative_divisions": [
+    {
+      "body": "Nashik Municipal Corporation",
+      "divisions": [
+        {"name": "Nashik East (नाशिक पूर्व)", "prabhags": 5, "wards": [1, 2, 3, 4, 5]},
+        {"name": "Nashik West (नाशिक पश्चिम)", "prabhags": 5, "wards": [6, 7, 8, 9, 10]},
+        {"name": "Panchavati (पंचवटी)", "prabhags": 6, "wards": [11, 12, 13, 14, 15, 16]},
+        {"name": "Nashik Road (नाशिक रोड)", "prabhags": 6, "wards": [17, 18, 19, 20, 21, 22]},
+        {"name": "CIDCO / New Nashik (सिडको / नवीन नाशिक)", "prabhags": 5, "wards": [23, 24, 25, 26, 27]},
+        {"name": "Satpur (सातपूर)", "prabhags": 4, "wards": [28, 29, 30, 31]}
+      ]
+    }
+  ],
+  "service_routes": [
+    {
+      "route_id": "RT-ROADS-URBAN-NMC",
+      "domain": "roads_infrastructure",
+      "locality_type": "urban",
+      "jurisdiction_id": "JUR-MH-NSK-ULB-NMC",
+      "responsible_institution": "Nashik Municipal Corporation - City Engineer & Public Works Dept",
+      "routing_condition": "Reported road is within NMC municipal boundaries and classified as municipal street/arterial.",
+      "escalation_channel": "Additional Municipal Commissioner (City Engineering) -> Municipal Commissioner",
+      "illustrative_sla_days": 5,
+      "statutory_reference": "Maharashtra Municipal Corporations Act, 1949 (Sec. 202); Maharashtra Right to Public Services Act, 2015",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-ROADS-RURAL-PWD",
+      "domain": "roads_infrastructure",
+      "locality_type": "rural",
+      "jurisdiction_id": "JUR-MH-NASHIK-DIST",
+      "responsible_institution": "Public Works Department (PWD) - Nashik Division",
+      "routing_condition": "Road is classified as State Highway (SH) or Major District Road (MDR) outside corporation limits.",
+      "escalation_channel": "Superintending Engineer PWD Nashik Circle -> Chief Engineer PWD North Maharashtra",
+      "illustrative_sla_days": 7,
+      "statutory_reference": "PWD Manual, Govt of Maharashtra; Maharashtra Right to Public Services Act, 2015",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-WATER-URBAN-NMC",
+      "domain": "water_sanitation",
+      "locality_type": "urban",
+      "jurisdiction_id": "JUR-MH-NSK-ULB-NMC",
+      "responsible_institution": "NMC Water Supply & Sewerage Department",
+      "routing_condition": "Municipal pipeline burst, water contamination, or supply schedule breakdown in NMC wards.",
+      "escalation_channel": "Superintending Engineer (Water Supply) NMC -> City Engineer",
+      "illustrative_sla_days": 2,
+      "statutory_reference": "MMC Act 1949 (Sec. 189-195); NMC Citizen Charter 2023",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-WATER-RURAL-ZP",
+      "domain": "water_sanitation",
+      "locality_type": "rural",
+      "jurisdiction_id": "JUR-MH-NSK-RLB-ZP",
+      "responsible_institution": "Nashik Zilla Parishad - Rural Water Supply Department (ग्रामीण पाणी पुरवठा विभाग)",
+      "routing_condition": "Village piped water schemes, borewells, or Jal Jeevan Mission operational defects in rural talukas.",
+      "escalation_channel": "Executive Engineer (RWS) ZP -> Chief Executive Officer (CEO) Zilla Parishad",
+      "illustrative_sla_days": 4,
+      "statutory_reference": "Maharashtra Zilla Parishads and Panchayat Samitis Act, 1961 (Sec. 100); JJM Guidelines",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-HEALTH-RURAL-PHC",
+      "domain": "healthcare",
+      "locality_type": "rural",
+      "jurisdiction_id": "JUR-MH-NSK-RLB-ZP",
+      "responsible_institution": "District Health Officer (DHO) - Nashik Zilla Parishad",
+      "routing_condition": "Primary Health Centre (PHC) staff vacancy, essential medicine stockout, or rural ambulance service issue.",
+      "escalation_channel": "Civil Surgeon Nashik -> Deputy Director of Health Services (Nashik Circle)",
+      "illustrative_sla_days": 3,
+      "statutory_reference": "Public Health Department, Maharashtra Govt; National Health Mission Service Guarantee",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-HEALTH-URBAN-CIVIL",
+      "domain": "healthcare",
+      "locality_type": "urban",
+      "jurisdiction_id": "JUR-MH-NASHIK-DIST",
+      "responsible_institution": "District Civil Hospital Nashik / Directorate of Health Services",
+      "routing_condition": "Secondary care facility shortages, emergency ward bottlenecks, or diagnostic machine breakdown.",
+      "escalation_channel": "Civil Surgeon -> Directorate of Health Services (DHS) Mumbai",
+      "illustrative_sla_days": 2,
+      "statutory_reference": "Maharashtra Civil Medical Code; State Health Service Guarantee",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-EDU-EXAM-BOARD",
+      "domain": "education_examinations",
+      "locality_type": "all",
+      "jurisdiction_id": "JUR-MH-NASHIK-DIST",
+      "responsible_institution": "Nashik Divisional Board - MSBSHSE (महाराष्ट्र राज्य माध्यमिक व उच्च माध्यमिक शिक्षण मंडळ)",
+      "routing_condition": "Board examination center infrastructure, paper leak rumors, invigilation irregularities, or student admit card errors.",
+      "escalation_channel": "Divisional Chairman MSBSHSE Nashik -> State Board Commissioner Pune",
+      "illustrative_sla_days": 2,
+      "statutory_reference": "Maharashtra Secondary and Higher Secondary Education Boards Act, 1965 (Sec. 19)",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-EDU-PRIMARY-ZP",
+      "domain": "education_examinations",
+      "locality_type": "rural",
+      "jurisdiction_id": "JUR-MH-NSK-RLB-ZP",
+      "responsible_institution": "District Education Officer (Primary) - Nashik ZP",
+      "routing_condition": "Zilla Parishad school structural safety, mid-day meal hygiene, or drinking water availability.",
+      "escalation_channel": "Education Officer (Secondary) -> CEO Zilla Parishad",
+      "illustrative_sla_days": 4,
+      "statutory_reference": "Right of Children to Free and Compulsory Education Act, 2009 (RTE Sec. 8)",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-ENV-MPCB",
+      "domain": "environment",
+      "locality_type": "all",
+      "jurisdiction_id": "JUR-MH-NASHIK-DIST",
+      "responsible_institution": "Maharashtra Pollution Control Board (MPCB) - Regional Office Nashik",
+      "routing_condition": "Industrial effluent discharge into Godavari / Darna rivers, illegal waste incineration, air quality spikes.",
+      "escalation_channel": "Regional Officer MPCB Nashik -> Member Secretary MPCB Mumbai",
+      "illustrative_sla_days": 3,
+      "statutory_reference": "Water (Prevention & Control of Pollution) Act 1974; Air (Prevention & Control) Act 1981",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-WORKER-MIDC",
+      "domain": "worker_service_disruption",
+      "locality_type": "semi_urban",
+      "jurisdiction_id": "JUR-MH-NASHIK-DIST",
+      "responsible_institution": "Office of the Additional Labour Commissioner - Nashik Division",
+      "routing_condition": "Industrial wage payment delays, unsafe manufacturing shop floors, sanitation in worker housing clusters at Satpur/Ambad MIDC.",
+      "escalation_channel": "Deputy Labour Commissioner -> State Labour Commissionerate Maharashtra",
+      "illustrative_sla_days": 5,
+      "statutory_reference": "Factories Act, 1948; Industrial Disputes Act, 1947; Occupational Safety Code",
+      "verification_state": "verified_statutory"
+    },
+    {
+      "route_id": "RT-COLLECTIVE-DIALOGUE",
+      "domain": "collective_concern_event",
+      "locality_type": "all",
+      "jurisdiction_id": "JUR-MH-NASHIK-DIST",
+      "responsible_institution": "District Citizen Grievance & Public Hearing Cell (Collectorate Nashik)",
+      "routing_condition": "Public gathering, peaceful assembly, strike update, or community memorandum regarding systemic public-service delays.",
+      "escalation_channel": "Sub-Divisional Magistrate (SDM) -> Resident Deputy Collector -> District Collector",
+      "illustrative_sla_days": 1,
+      "statutory_reference": "District Administration Manual; Right to Assembly Protection; Citizen Charter Grievance Protocols",
+      "verification_state": "verified_statutory",
+      "rights_safeguard_note": "NON-PUNITIVE LISTENING ONLY. System purpose is to hear grievances and schedule official dialogue desks. Absolutely no identification of demonstrators, no facial/biometric indexing, and no automated law-enforcement dispatch."
+    }
+  ]
+}

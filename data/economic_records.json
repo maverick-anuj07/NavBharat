@@ -1,0 +1,108 @@
+{
+  "title": "Public Finance & Fiscal Federalism Reference Records (India - Maharashtra - Nashik)",
+  "meta": {
+    "version": "1.0.0",
+    "updated": "2026-10-14",
+    "compiler": "CivicLoop Team Nav Bharat",
+    "caveat_notice": "Official fiscal figures represent institutional statutory allocations and audited disbursements under the Constitution and Financial Codes. Public funds are governed by executive rules and appropriation acts; individual legislators or officers do not possess arbitrary personal budget discretion."
+  },
+  "fiscal_architecture_summary": {
+    "constitutional_basis": "Articles 268-293 of the Constitution of India define the fiscal relationship between Union and States. 73rd and 74th Amendments (Articles 243H, 243I, 243X, 243Y) establish local government financial powers and State Finance Commissions.",
+    "flow_of_funds": [
+      {
+        "tier": "Tier 1: Union of India",
+        "instruments": "Gross Tax Revenue (Direct & Indirect Taxes, GST, Customs, Corporation Tax, Income Tax), Non-Tax Revenue, Disinvestment",
+        "distribution_channel": "Devolution of Central Taxes (Article 270) based on Finance Commission recommendations (41% net divisible pool), plus Centrally Sponsored Schemes (CSS) and Central Sector Schemes."
+      },
+      {
+        "tier": "Tier 2: State Government (Maharashtra)",
+        "instruments": "State Own Tax Revenue (State GST, State Excise, Stamp Duty & Registration, Taxes on Vehicles, Electricity Duty), Non-Tax Revenue, Share in Central Taxes, Grants-in-Aid from Union (Article 275).",
+        "distribution_channel": "State Budget appropriations via Annual Financial Statement (Article 202); allocations to State Departments, District Annual Plan (DPDC), and Statutory Local Bodies."
+      },
+      {
+        "tier": "Tier 3: Local Self-Governments (Nashik ULBs & PRIs)",
+        "instruments": "Own Revenues (Property tax, user charges, water cess, trade licenses, building permission fee) PLUS Intergovernmental Transfers: (1) 15th Finance Commission Tied & Untied Grants, (2) State Finance Commission recommendations, (3) Stamp duty surcharges, (4) Specific scheme grants (JJM, AMRUT, Swachh Bharat)."
+      }
+    ]
+  },
+  "records": [
+    {
+      "id": "REC-TAX-DEV-MH-2425",
+      "entity": "Government of Maharashtra",
+      "jurisdiction_id": "JUR-MH-STATE",
+      "fiscal_year": "2024-25",
+      "category": "Tax Devolution (Union Divisible Pool)",
+      "amount_inr_crores": 77800.0,
+      "stage": "Revised Estimates (RE)",
+      "source_name": "Ministry of Finance, Government of India - Union Budget Receipts Budget (Statement 2)",
+      "source_url": "https://www.indiabudget.gov.in/",
+      "verification_date": "2026-10-14",
+      "caveat": "Determined by XV-FC formula: Population (15%), Area (15%), Forest & Ecology (10%), Income Distance (45%), Tax Effort (2.5%), Demographic Performance (12.5%)."
+    },
+    {
+      "id": "REC-CSS-MAHA-2425",
+      "entity": "Centrally Sponsored Schemes in Maharashtra",
+      "jurisdiction_id": "JUR-MH-STATE",
+      "fiscal_year": "2024-25",
+      "category": "Central Assistance for State Plans & CSS",
+      "amount_inr_crores": 46250.0,
+      "stage": "Budget Estimates (BE)",
+      "source_name": "Union Budget - Statement 9: Transfer of Resources to States and UTs",
+      "source_url": "https://www.indiabudget.gov.in/",
+      "verification_date": "2026-10-14",
+      "caveat": "Includes central matching shares (60:40 or 50:50) for Jal Jeevan Mission, Samagra Shiksha, National Health Mission, and PMGSY rural roads."
+    },
+    {
+      "id": "REC-FINCOM-RLB-NSK-2425",
+      "entity": "Nashik Zilla Parishad & 15 Panchayat Samitis",
+      "jurisdiction_id": "JUR-MH-NSK-RLB-ZP",
+      "fiscal_year": "2024-25",
+      "category": "15th Finance Commission Rural Local Body Grants",
+      "amount_inr_crores": 164.5,
+      "stage": "Official Allocation Schedule",
+      "source_name": "Finance Commission of India / Ministry of Panchayati Raj eGramSwaraj portal",
+      "source_url": "https://fincomindia.nic.in/",
+      "verification_date": "2026-10-14",
+      "caveat": "60% Tied: specifically ring-fenced for rural drinking water, rainwater harvesting, greywater management, and ODF-Plus sanitation; 40% Untied for local civic priorities."
+    },
+    {
+      "id": "REC-FINCOM-ULB-NMC-2425",
+      "entity": "Nashik Municipal Corporation (NMC)",
+      "jurisdiction_id": "JUR-MH-NSK-ULB-NMC",
+      "fiscal_year": "2024-25",
+      "category": "15th Finance Commission Urban Local Body Grant",
+      "amount_inr_crores": 82.3,
+      "stage": "Official Allocation Schedule",
+      "source_name": "Finance Commission of India - Million Plus Cities Challenge Fund Allocation",
+      "source_url": "https://fincomindia.nic.in/",
+      "verification_date": "2026-10-14",
+      "caveat": "Performance-linked to National Clean Air Programme (NCAP) ambient particulate reduction and water-recycling benchmarks."
+    },
+    {
+      "id": "REC-DPDC-NSK-2425",
+      "entity": "District Planning and Development Committee (DPDC) Nashik",
+      "jurisdiction_id": "JUR-MH-NASHIK-DIST",
+      "fiscal_year": "2024-25",
+      "category": "District Annual Plan Scheme (DAP)",
+      "amount_inr_crores": 1050.0,
+      "stage": "Approved Annual Outlay",
+      "source_name": "Planning Department, Govt of Maharashtra / Nashik District Collectorate",
+      "source_url": "https://nashik.gov.in/",
+      "verification_date": "2026-10-14",
+      "caveat": "Statutory body under Article 243ZD; consolidates draft district plan for rural panchayats and municipalities across Nashik."
+    },
+    {
+      "id": "REC-RBI-MAHA-WMA-2425",
+      "entity": "State Bank of Government of Maharashtra (RBI Managed)",
+      "jurisdiction_id": "JUR-MH-STATE",
+      "fiscal_year": "2024-25",
+      "category": "Ways and Means Advances (WMA) & Overdraft Limit",
+      "amount_inr_crores": 4543.0,
+      "stage": "Operational Facility Limit",
+      "source_name": "Reserve Bank of India - Monetary Policy & Financial Markets Operations",
+      "source_url": "https://www.rbi.org.in/",
+      "verification_date": "2026-10-14",
+      "caveat": "Short-term temporary liquidity cushion to bridge intra-year mismatches between receipts and disbursements; strictly financial management, not departmental budget."
+    }
+  ]
+}
